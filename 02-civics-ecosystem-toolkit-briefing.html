@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Policy Briefing — Party Members Fund & Civics Ecosystem Cooperative</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #141210;
+    --paper: #f5f1e8;
+    --warm: #ede9de;
+    --sidebar: #eae6dc;
+    --accent-blue: #1d4e6b;
+    --accent-green: #1e5c30;
+    --blue-pale: #e8f0f5;
+    --green-pale: #e8f2eb;
+    --gold: #8a6f2e;
+    --gold-pale: #f5f0e0;
+    --muted: #5a5850;
+    --rule: #d0cbbf;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Spectral', Georgia, serif;
+    --sans: 'Barlow', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #c8c4b8;
+    font-family: var(--serif);
+    color: var(--ink);
+    padding: 2.5rem 1rem;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 6px 48px rgba(0,0,0,0.15);
+  }
+
+  .page::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-blue) 40%, var(--accent-green) 60%, var(--gold) 100%);
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 3rem 4rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .doc-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .doc-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+
+  .doc-sub {
+    font-family: var(--serif);
+    font-size: 0.96rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-item { display: flex; flex-direction: column; gap: 0.15rem; }
+
+  .meta-label {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .meta-value {
+    font-family: var(--sans);
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* ── Two-column layout ── */
+  .wrap {
+    display: grid;
+    grid-template-columns: 1fr 12.5rem;
+  }
+
+  .main {
+    padding: 3rem 3rem 3rem 4rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  .aside {
+    background: var(--sidebar);
+    padding: 2.5rem 1.6rem;
+  }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 3rem; }
+  .section:last-child { margin-bottom: 0; }
+
+  .section-hd {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 1.8rem 0 0.6rem;
+  }
+
+  h3.blue { color: var(--accent-blue); }
+  h3.green { color: var(--accent-green); }
+  h3.neutral { color: var(--muted); }
+
+  p {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.78;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+  p strong { font-weight: 700; }
+  p em { font-style: italic; }
+
+  /* ── Instrument cards — the two-instrument overview ── */
+  .instrument-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.5rem 0 2rem;
+  }
+
+  .instrument {
+    padding: 1.6rem 1.7rem;
+  }
+
+  .instrument.pmf { background: var(--blue-pale); }
+  .instrument.cec { background: var(--green-pale); }
+
+  .inst-tag {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .inst-tag.blue { color: var(--accent-blue); }
+  .inst-tag.green { color: var(--accent-green); }
+
+  .inst-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .inst-desc {
+    font-family: var(--sans);
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 0.8rem;
+  }
+
+  .inst-props {
+    list-style: none;
+    margin: 0;
+  }
+
+  .inst-props li {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--ink);
+    padding: 0.2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    line-height: 1.5;
+  }
+
+  .inst-props li:last-child { border-bottom: none; }
+
+  /* ── Pull / emphasis ── */
+  .pull {
+    padding: 1rem 1.4rem;
+    margin: 1.3rem 0;
+  }
+
+  .pull.blue { border-left: 3px solid var(--accent-blue); background: var(--blue-pale); }
+  .pull.green { border-left: 3px solid var(--accent-green); background: var(--green-pale); }
+  .pull.gold { border-left: 3px solid var(--gold); background: var(--gold-pale); }
+
+  .pull p {
+    font-size: 0.96rem;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  /* ── Concern blocks ── */
+  .concern {
+    border: 1px solid var(--rule);
+    margin: 1.2rem 0;
+    background: white;
+  }
+
+  .concern-q {
+    padding: 0.75rem 1.2rem;
+    background: var(--ink);
+    font-family: var(--sans);
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: white;
+    font-style: italic;
+  }
+
+  .concern-a {
+    padding: 0.9rem 1.2rem;
+  }
+
+  .concern-a p {
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* ── Relationship diagram ── */
+  .rel-diagram {
+    border: 1px solid var(--rule);
+    margin: 1.5rem 0 2rem;
+    background: white;
+    padding: 1.8rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .rel-node {
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid var(--rule);
+  }
+
+  .rel-node.pmf { border-color: var(--accent-blue); background: var(--blue-pale); }
+  .rel-node.cec { border-color: var(--accent-green); background: var(--green-pale); }
+
+  .rel-node-label {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .rel-node.pmf .rel-node-label { color: var(--accent-blue); }
+  .rel-node.cec .rel-node-label { color: var(--accent-green); }
+
+  .rel-node-name {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .rel-node-desc {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .rel-arrow {
+    text-align: center;
+  }
+
+  .rel-arrow-line {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .rel-arrow-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── Prose list ── */
+  .prose-list {
+    list-style: none;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .prose-list li {
+    font-family: var(--serif);
+    font-size: 0.93rem;
+    font-weight: 300;
+    line-height: 1.65;
+    padding: 0.4rem 0 0.4rem 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    color: var(--ink);
+  }
+
+  .prose-list li:last-child { border-bottom: none; }
+
+  .prose-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    font-weight: 400;
+  }
+
+  .prose-list.blue li::before { color: var(--accent-blue); }
+  .prose-list.green li::before { color: var(--accent-green); }
+
+  /* ── Questions table ── */
+  .questions {
+    margin: 1.2rem 0 1.8rem;
+  }
+
+  .q-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+
+  .q-item:last-child { border-bottom: none; }
+
+  .q-num {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: white;
+    background: var(--accent-blue);
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  .q-text {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* ── Marginalia ── */
+  .aside-note { margin-bottom: 2rem; }
+  .aside-note:last-child { margin-bottom: 0; }
+
+  .aside-label {
+    font-family: var(--mono);
+    font-size: 0.54rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-green);
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .aside-note p {
+    font-family: var(--sans);
+    font-size: 0.77rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .aside-note p:last-child { margin-bottom: 0; }
+  .aside-note strong { color: var(--ink); font-weight: 600; }
+
+  hr.aside-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 1.8rem 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-id {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+
+  .footer-set {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    color: var(--accent-green);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--ink);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .print-btn:hover { background: var(--accent-green); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+    .print-btn { display: none; }
+  }
+
+  @media (max-width: 720px) {
+    .wrap { grid-template-columns: 1fr; }
+    .main { padding: 2rem 1.5rem; border-right: none; border-bottom: 1px solid var(--rule); }
+    .aside { padding: 2rem 1.5rem; }
+    header, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .instrument-pair, .rel-diagram { grid-template-columns: 1fr; }
+    h1 { font-size: 1.6rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+      }
+
+  /* ── Back to index ── */
+  .back-to-index {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 4rem;
+    background: var(--ink, #161412);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .back-to-index a {
+    font-family: var(--mono, 'DM Mono', monospace);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-to-index a:hover { color: white; }
+  @media print { .back-to-index { display: none; } }
+  @media (max-width: 680px) { .back-to-index { padding-left: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="back-to-index"><a href="01-civics-ecosystem-toolkit-index.html">&#8592; Civics Ecosystem Toolkit</a></div>
+
+  <header>
+    <div class="doc-eyebrow">The Civics Ecosystem Toolkit — Policy Briefing</div>
+    <h1>Two instruments for civic action beyond party operations</h1>
+    <p class="doc-sub">A plain-language guide to the Party Members Fund and the Civics Ecosystem Cooperative — what they are, how they differ, and how they relate</p>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Audience</span>
+        <span class="meta-value">Policy committees, party executives</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Purpose</span>
+        <span class="meta-value">Inform adoption decisions</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Documents covered</span>
+        <span class="meta-value">PMF Amendment · CEC Charter · Policy Template</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Version</span>
+        <span class="meta-value">1.0 — May 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+  <div class="main">
+
+    <!-- 01 -->
+    <div class="section" id="s01">
+      <div class="section-hd">
+        <span class="section-num">01</span>
+        <h2>Two separate instruments</h2>
+      </div>
+
+      <p>This briefing covers two distinct proposals. They are related but genuinely independent. A party can adopt one without the other. They solve different problems and operate at different scales.</p>
+
+      <p><strong>A note on context.</strong> Both instruments are written from within the Australian civic context &mdash; a multi-party electoral democracy with established institutions and a registered party system. The PMF amendment is explicitly Australian in its legal references. The CEC Charter is written to be more broadly applicable, with an Evolution Note (Article VII) that flags the questions any adaptation to other jurisdictions or civic traditions would need to address.</p>
+
+      <div class="instrument-pair">
+        <div class="instrument pmf">
+          <div class="inst-tag blue">Instrument 1</div>
+          <div class="inst-name">Party Members Fund</div>
+          <div class="inst-desc">A constitutional amendment giving members democratic control over a fund that goes beyond party operations. Members collectively and individually direct money toward civic causes they choose.</div>
+          <ul class="inst-props">
+            <li>Lives inside party constitution</li>
+            <li>Members govern it directly</li>
+            <li>Flexible — any eligible civic purpose</li>
+            <li>Parties remain separate actors</li>
+            <li>Survives distrust between parties</li>
+          </ul>
+        </div>
+        <div class="instrument cec">
+          <div class="inst-tag green">Instrument 2</div>
+          <div class="inst-name">Civics Ecosystem Cooperative</div>
+          <div class="inst-desc">An independent worker cooperative building shared infrastructure for the democratic ecosystem. Pre-competitive. Open to all parties, organisations, and individuals. Persistent through political disagreement.</div>
+          <ul class="inst-props">
+            <li>Independent of any party</li>
+            <li>Individual members govern it</li>
+            <li>Focused — civic infrastructure only</li>
+            <li>Operates across parties collectively</li>
+            <li>Designed to outlast political cycles</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>The Party Members Fund is about <em>member agency within a party context</em> — giving politically engaged people a democratic instrument for civic action broader than the party itself. The Civics Ecosystem Cooperative is about <em>collective infrastructure across the ecosystem</em> — maintaining the shared tools and knowledge all civic organisations need, regardless of their political relationships with each other.</p>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="s02">
+      <div class="section-hd">
+        <span class="section-num">02</span>
+        <h2>The shared problem they both address</h2>
+      </div>
+
+      <p>The starting point for both instruments is the same observation: political parties, community organisations, unions, and civic groups currently duplicate enormous effort. Each builds its own membership database. Each independently reinvents volunteer coordination. Each pays separately for tools the others are also paying for. Each organisation that runs a citizens jury reinvents the facilitation methodology. Each new party learns the same hard lessons from scratch.</p>
+
+      <div class="pull gold">
+        <p>This is not a resource problem. The money and skill exist across the civic ecosystem. They are simply never pooled. Both instruments are pooling mechanisms — operating at different layers.</p>
+      </div>
+
+      <p>The Party Members Fund pools resources within a party, directed by members toward purposes beyond the party. The Civics Ecosystem Cooperative pools resources across parties and civic organisations, directed collectively toward shared infrastructure. They address the same underlying problem at different levels of the ecosystem.</p>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="s03">
+      <div class="section-hd">
+        <span class="section-num">03</span>
+        <h2>The Party Members Fund in plain terms</h2>
+      </div>
+
+      <p>The Party Members Fund (PMF) is an optional constitutional amendment. Members who opt in contribute a premium above their standard membership fee. That money does not go to the party. It goes where members democratically decide it should go.</p>
+
+      <h3 class="blue">What members can fund</h3>
+      <p>Anything with a genuine civic, community, social, or democratic purpose that goes beyond party operations. The eligibility rules are deliberately broad. Illustrative examples:</p>
+      <ul class="prose-list blue">
+        <li>Mutual aid organisations and community support networks</li>
+        <li>Civic technology development — including contributions to the Civics Ecosystem Cooperative</li>
+        <li>Community infrastructure and shared local resources</li>
+        <li>Citizens jury facilitation and participatory governance initiatives</li>
+        <li>Cross-party collaborative projects where members of different parties act as individuals toward a shared goal</li>
+        <li>Independent civic research, openly published</li>
+      </ul>
+
+      <h3 class="blue">How members govern it — principles in the constitution, mechanisms in the policy</h3>
+      <p>The constitutional amendment holds the governance <em>principles</em> only — equal governance rights per member, mental bandwidth respect, transparency, no technical literacy required. The actual <em>mechanisms</em> live in a <strong>Party Fund Governance Policy</strong> the party maintains separately, outside the constitution. The policy can be updated between cycles without a constitutional amendment.</p>
+      <p>This separation gives the party genuine design authority over the Fund without embedding that design in the constitution. The party is the architect — it sets the rules of the system through its Policy. Members are the operators — they run it once a cycle is live. The one hard constraint: <strong>neither the party nor members can change the rules during an active cycle.</strong> Nobody changes the rules during a match.</p>
+      <p>The companion <strong>Fund Mechanism Ideas</strong> note surveys possible allocation approaches — deliberation panels, token allocation, quadratic funding, conviction voting, and hybrid models — with plain-language trade-offs for each. It has no legal force; it is a reference for parties designing their Policy. Most parties should start simple and evolve as the Fund matures.</p>
+
+      <h3 class="blue">What the party cannot do</h3>
+      <p>The amendment includes hard limits. The party cannot direct or veto member allocation decisions, retain any portion of contributions for party operations, or instruct members how to vote. These are structural constraints written into the amendment — not goodwill provisions.</p>
+
+      <div class="pull blue">
+        <p>The PMF is party-specific and parties remain separate actors. If trust between parties breaks down, each party's fund operates independently without damage to the other. Cross-party collaboration through the PMF is emergent and optional, not structurally dependent on inter-party trust.</p>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="s04">
+      <div class="section-hd">
+        <span class="section-num">04</span>
+        <h2>The Civics Ecosystem Cooperative in plain terms</h2>
+      </div>
+
+      <p style="font-style:italic;color:var(--muted,#6b6358);font-size:0.9rem;margin-bottom:1.5rem;">If you&rsquo;ve already read the CEC Introduction, this section covers similar ground. Skip ahead to section 05 if so.</p>
+
+      <p>The Civics Ecosystem Cooperative (CEC) is an independent worker cooperative — owned and governed by individual members — that builds and maintains shared infrastructure for the civic and democratic ecosystem. It is not a party affiliate, not a grant-making fund, and not a technology vendor. It is closer in spirit to an open-source software foundation, with a remit that extends beyond software to the soft infrastructure of democratic practice.</p>
+
+      <h3 class="green">Two kinds of infrastructure</h3>
+      <p><strong>Formal infrastructure</strong> is the hard layer: open-source CRMs, voting software, volunteer coordination platforms, electoral toolkits, data standards. The technical plumbing that democratic operations run on — currently purchased separately by each party from vendors like NationBuilder, at full price, with no shared benefit.</p>
+      <p><strong>Informal infrastructure</strong> is the soft layer: citizens jury facilitation guides, participatory budgeting runbooks, organising playbooks, institutional memory. The knowledge that democratic participation depends on — currently reinvented from scratch by each organisation that needs it, and lost when key people leave.</p>
+
+      <h3 class="green">Who governs it</h3>
+      <p>Individual members. Not organisations. Not parties. One person, one vote, regardless of contribution level or organisational affiliation. A civic organisation — e.g. a union, an advocacy group, or a community network — can fund the CEC and use everything it builds. Its staff or supporters join as individual members and vote on equal terms. The organisation itself has no governance role. The same applies to every party and civic body that engages with it.</p>
+
+      <p>Members declare their organisational affiliations openly — visible to all other members before any vote. Influence by organisations is exercised only through their people who participate. You cannot purchase governance by writing a cheque at the organisational level.</p>
+
+      <h3 class="green">Why it persists through political disagreement</h3>
+      <p>The CEC operates at a layer below where political conflict happens. Every party needs a CRM. Every party benefits from open voting software. Every organisation running a citizens jury needs facilitation methodology. These are pre-competitive needs — shared regardless of political relationships between the parties that have them.</p>
+
+      <div class="pull green">
+        <p>Distrust between parties does not break the CEC because it was never built on trust between parties. It was built on shared interest in the infrastructure itself. Even parties that despise each other share an interest in good democratic plumbing.</p>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="s05">
+      <div class="section-hd">
+        <span class="section-num">05</span>
+        <h2>How they relate to each other</h2>
+      </div>
+
+      <div class="rel-diagram">
+        <div class="rel-node pmf">
+          <div class="rel-node-label">Instrument 1</div>
+          <div class="rel-node-name">Party Members Fund</div>
+          <div class="rel-node-desc">Member-directed. Inside party constitution. Flexible destinations. Parties separate.</div>
+        </div>
+        <div class="rel-arrow">
+          <div class="rel-arrow-line">can fund ↓<br>— but —<br>not required</div>
+          <div class="rel-arrow-label">optional relationship</div>
+        </div>
+        <div class="rel-node cec">
+          <div class="rel-node-label">Instrument 2</div>
+          <div class="rel-node-name">Civics Ecosystem Cooperative</div>
+          <div class="rel-node-desc">Individual-governed. Independent. Focused on shared infrastructure. Collective persistence.</div>
+        </div>
+      </div>
+
+      <p>The PMF can feed the CEC — members may collectively or individually direct contributions toward the Cooperative as one of many eligible destinations. But neither instrument requires the other to exist or function.</p>
+
+      <p>A party could adopt the PMF and never direct a cent to the CEC. The CEC would continue, funded through direct individual memberships, organisational contributions, and grants. A party's members could join the CEC directly as individuals, with no PMF involved. The CEC does not depend on any party's constitutional arrangements.</p>
+
+      <p>The PMF may also be how the CEC is initially seeded — a founding party's members directing early contributions toward it, bootstrapping the first governance cycle. But this is an origin story, not a permanent dependency. If the PMF disappears, the CEC persists. If the CEC is not yet a destination members want to fund, the PMF operates perfectly well directing money elsewhere.</p>
+
+      <p><strong>The key distinction:</strong> the PMF keeps parties as separate actors — collaboration through it is voluntary and survives inter-party distrust. The CEC operates collectively across all participating parties — its value is precisely that it does not depend on parties cooperating with each other, because it operates at the infrastructure layer where they share interest regardless of their political relationship.</p>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="s06">
+      <div class="section-hd">
+        <span class="section-num">06</span>
+        <h2>What adopting each instrument requires</h2>
+      </div>
+
+      <h3 class="blue">To adopt the Party Members Fund</h3>
+      <ul class="prose-list blue">
+        <li>Fill in all placeholders in the amendment template and seek AEC compliance advice</li>
+        <li>Open a dedicated bank account ring-fenced from party operations</li>
+        <li>Appoint a Fund Coordinator — administrative role only, cannot hold party executive office simultaneously</li>
+        <li>Decide on a governance platform for collective proposals and individual-mode pledge tracking</li>
+        <li>Pass the amendment at the next eligible general meeting</li>
+        <li>Recruit a founding cohort — aim for 20–50 engaged members before the first cycle opens</li>
+      </ul>
+
+      <h3 class="green">To join the Civics Ecosystem Cooperative</h3>
+      <ul class="prose-list green">
+        <li>Individual members join directly — financial contribution at any level on the sliding scale, or via recognised labour contribution to a funded project</li>
+        <li>No party action required — individuals join in their own right</li>
+        <li>Organisations may contribute financially and use all outputs — no formal joining process required for organisational engagement</li>
+        <li>Parties wishing to actively recruit their members to the CEC may do so through the PMF mechanism or through direct member communication</li>
+      </ul>
+
+      <p>The two adoption processes are independent. A party may adopt the PMF amendment without any of its members joining the CEC. Individual members may join the CEC without the party having adopted the PMF. Both paths are open simultaneously.</p>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="s07">
+      <div class="section-hd">
+        <span class="section-num">07</span>
+        <h2>Honest concerns and direct answers</h2>
+      </div>
+
+      <div class="concern">
+        <div class="concern-q">"The PMF gives members a fund the party can't control. What's to stop them doing something embarrassing?"</div>
+        <div class="concern-a">
+          <p>The eligibility rules — which the party sets when it adopts the amendment — define the outer boundary. Within that boundary, members decide. The party cannot override individual allocation decisions, and it should not try to: the moment a party is seen directing its members' PMF votes, the fund's credibility as a genuine member-directed instrument collapses. The party's protection is the eligibility rules, clearly written at adoption. If those rules are sound, the fund does not produce embarrassment.</p>
+        </div>
+      </div>
+
+      <div class="concern">
+        <div class="concern-q">"We're funding tools that help rival parties through the CEC. Why would we do that?"</div>
+        <div class="concern-a">
+          <p>Because the plumbing is pre-competitive. Parties don't win elections because their CRM is better than the other party's CRM. They win on policy, candidates, and community relationships. Paying full price to NationBuilder while rival parties also pay full price to NationBuilder is not a competitive advantage — it is collective waste. The CEC converts that waste into shared infrastructure at lower cost. The party that helps build it pays less than it currently does and gets tools it owns outright.</p>
+        </div>
+      </div>
+
+      <div class="concern">
+        <div class="concern-q">"What if a rival party dominates the CEC's governance?"</div>
+        <div class="concern-a">
+          <p>Individual membership with equal votes, a 5% per-member cap on vote weight, and mandatory affiliation transparency are the structural protections. Any concentration of affiliated members around a vote is visible to all other members before the vote occurs. The mechanism that would make capture possible is the same one that makes it visible. Quiet capture is structurally difficult; overt capture is self-defeating because it destroys the CEC's value to everyone including the capturing party.</p>
+        </div>
+      </div>
+
+      <div class="concern">
+        <div class="concern-q">"Does adopting the PMF commit us to the CEC?"</div>
+        <div class="concern-a">
+          <p>No. They are independent instruments. Adopting the PMF creates a member-directed fund with flexible eligible destinations. The CEC is one possible destination among many. Members may never vote to direct PMF contributions toward the CEC, and the PMF functions perfectly well regardless. The two instruments are designed to be separable precisely so that a party can adopt either without committing to both.</p>
+        </div>
+      </div>
+
+      <div class="concern">
+        <div class="concern-q">"What about AEC disclosure obligations?"</div>
+        <div class="concern-a">
+          <p>The PMF amendment template explicitly requires the party to seek compliance advice before operationalising. Whether contributions constitute political donations under the Commonwealth Electoral Act depends on the party&rsquo;s registration status, the jurisdiction, and how the CEC eventually incorporates. This is not a reason to avoid adoption &mdash; it is a reason to get advice first. The PMF amendment is explicitly an Australian instrument. The CEC Charter is written to be more broadly applicable; Article VII of the Charter contains an honest account of what adapting either instrument to other jurisdictions or civic traditions would require.</p>
+        </div>
+      </div>
+
+      <div class="concern">
+        <div class="concern-q">"What happens to the Fund if our party becomes insolvent or shuts down?"</div>
+        <div class="concern-a">
+          <p>This is a real risk and the amendment addresses it directly in clause [X.X.13]. Fund contributions must be transferred to an eligible destination within 90 days of a wind-up event, before any distribution of general party assets. If Fund members can&rsquo;t be convened in time, the balance defaults to the Civics Ecosystem Cooperative (if incorporated) or a registered charity with compatible purposes.</p>
+          <p>The stronger protection is trust structuring &mdash; establishing the Fund account on trust terms so that contributions are legally not party property and are beyond the reach of creditors. The amendment requires the party to seek legal advice on this before launch. It is the single most important legal step in the adoption checklist. A party that skips it is relying on the constitutional clause alone, which may not survive insolvency proceedings.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="s08">
+      <div class="section-hd">
+        <span class="section-num">08</span>
+        <h2>What the committee needs to decide</h2>
+      </div>
+
+      <p>This briefing asks the committee to consider each instrument separately and form a view on each independently.</p>
+
+      <div class="questions">
+        <div class="q-item">
+          <div class="q-num">1</div>
+          <div class="q-text">Is the party willing to give members democratic control over a fund that goes beyond party operations — including causes the party leadership might not have chosen? If no, the PMF is not the right instrument for this party at this time.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-num">2</div>
+          <div class="q-text">Is the party willing to adopt constitutional constraints on its own control over that fund — including a prohibition on directing member votes? If no, the PMF cannot function as intended and should not be adopted in a weakened form.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-num">3</div>
+          <div class="q-text">Does the party want to actively recruit its members to the Civics Ecosystem Cooperative — either through the PMF mechanism or directly? If yes, the practical next step is identifying engaged members who would join as individuals.</div>
+        </div>
+        <div class="q-item">
+          <div class="q-num">4</div>
+          <div class="q-text">Is the party prepared to complete the pre-adoption steps — AEC advice, dedicated bank account, Fund Coordinator — before putting the PMF amendment to a vote? These are administrative requirements, not difficult ones, but they must be in place before launch.</div>
+        </div>
+      </div>
+
+      <p>Affirmative answers to questions 1 and 2 lead to PMF adoption. Question 3 is independent of the PMF. Question 4 sets the practical timeline. A party can answer yes to 3 and no to 1 — it just means its members engage with the CEC directly as individuals, without a party fund mechanism.</p>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- ── Aside ── -->
+  <div class="aside">
+
+    <div class="aside-note">
+      <div class="aside-label">The two instruments</div>
+      <p><strong>Party Members Fund</strong> — inside party constitution, member-directed, flexible destinations, parties stay separate.</p>
+      <p><strong>Civics Ecosystem Cooperative</strong> — independent cooperative, individual-governed, focused on shared civic infrastructure.</p>
+    </div>
+
+    <hr class="aside-rule">
+
+    <div class="aside-note">
+      <div class="aside-label">The core distinction</div>
+      <p>PMF: parties as <strong>separate actors</strong>. Collaboration is voluntary. Distrust between parties doesn't break it.</p>
+      <p>CEC: collective action <strong>across parties</strong>. Persists through political disagreement because it operates at a pre-competitive layer.</p>
+    </div>
+
+    <hr class="aside-rule">
+
+    <div class="aside-note">
+      <div class="aside-label">PMF in brief</div>
+      <p>Members opt in. Party sets Fund Governance Policy — the design. Members govern within it — the operation. Party cannot change rules mid-cycle or override live decisions.</p>
+    </div>
+
+    <hr class="aside-rule">
+
+    <div class="aside-note">
+      <div class="aside-label">CEC in brief</div>
+      <p>Individual members. Strategic Assembly every 2 years sets direction. Sortition panels deliberate on projects each cycle. Standing Committee administers. Organisations fund but don't govern.</p>
+    </div>
+
+    <hr class="aside-rule">
+
+    <div class="aside-note">
+      <div class="aside-label">The relationship</div>
+      <p>PMF <em>can</em> feed the CEC. Neither <em>requires</em> the other. Both can be adopted independently. Both can operate without the other existing.</p>
+    </div>
+
+    <hr class="aside-rule">
+
+    <div class="aside-note">
+      <div class="aside-label">PMF pre-adoption</div>
+      <p>AEC compliance advice.</p>
+      <p>Draft Fund Governance Policy.</p>
+      <p>Dedicated bank account.</p>
+      <p>Fund Coordinator appointed.</p>
+      <p>Data privacy resolved.</p>
+      <p>20–50 founding members identified.</p>
+    </div>
+
+    <hr class="aside-rule">
+
+    <div class="aside-note">
+      <div class="aside-label">CEC joining</div>
+      <p>Individuals join directly — financial or labour pathway. No party action required.</p>
+      <p>Organisations contribute and use outputs — no formal joining process.</p>
+    </div>
+
+    <hr class="aside-rule">
+
+    <div class="aside-note">
+      <div class="aside-label">Documents</div>
+      <p><strong>Toolkit Index</strong> — start here, reading guide.</p>
+      <p><strong>PMF Amendment</strong> — constitutional template.</p>
+      <p><strong>Fund Governance Policy Template</strong> — working document for launch.</p>
+      <p><strong>Fund Mechanism Ideas</strong> — allocation reference.</p>
+      <p><strong>CEC Charter</strong> — governing document.</p>
+      <p><strong>CEC Introduction</strong> — one-page plain summary.</p>
+    </div>
+
+  </div><!-- /aside -->
+  </div><!-- /wrap -->
+
+  <footer>
+    <div class="footer-id">
+      Policy Briefing — Party Members Fund &amp; Civics Ecosystem Cooperative — v1.2<br>
+      For internal party discussion. Not for public distribution without amendment.
+    </div>
+    <div class="footer-set">
+      The Civics Ecosystem Toolkit<br>
+      PMF Amendment ↗ · Fund Mechanism Ideas ↗ · CEC Charter ↗ · Introduction ↗
+    </div>
+  </footer>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>

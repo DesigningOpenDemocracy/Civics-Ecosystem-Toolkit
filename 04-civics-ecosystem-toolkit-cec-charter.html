@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civics Ecosystem Cooperative — Founding Charter</title>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap");
+  :root {
+    --ink: #0e1a10; --paper: #f4f1e8; --warm: #ede9de;
+    --accent: #1e5c30; --accent-pale: #e8f2eb;
+    --gold: #8a6f2e; --gold-pale: #f5f0e0;
+    --muted: #5a6858; --rule: #cdc8bb;
+    --mono: "DM Mono", monospace;
+    --serif: "Spectral", Georgia, serif;
+    --sans: "Barlow", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #c0bdb4; font-family: var(--serif); color: var(--ink); padding: 2.5rem 1rem; line-height: 1.7; }
+  .page { max-width: 860px; margin: 0 auto; background: var(--paper); box-shadow: 0 6px 48px rgba(0,0,0,0.16); }
+  .page::before { content: ""; display: block; height: 6px; background: linear-gradient(90deg, var(--accent) 60%, var(--gold) 100%); }
+  .cover { padding: 4rem 4.5rem 3rem; border-bottom: 2px solid var(--rule); text-align: center; }
+  .cover-kicker { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.8rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+  .cover-kicker::before, .cover-kicker::after { content: ""; width: 3rem; height: 1px; background: var(--accent); }
+  .cover-emblem { font-size: 2.8rem; margin-bottom: 1.2rem; display: block; }
+  h1 { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; line-height: 1.1; color: var(--ink); letter-spacing: -0.025em; margin-bottom: 0.4rem; }
+  .cover-sub { font-family: var(--serif); font-size: 1rem; font-weight: 300; font-style: italic; color: var(--muted); margin-bottom: 2.5rem; }
+  .cover-chips { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+  .chip { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid var(--rule); color: var(--muted); }
+  .chip.primary { border-color: var(--accent); color: var(--accent); }
+  .preamble { padding: 2.5rem 4.5rem; border-bottom: 1px solid var(--rule); background: var(--warm); }
+  .preamble-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+  .preamble p { font-family: var(--serif); font-size: 1rem; font-weight: 300; font-style: italic; line-height: 1.82; color: var(--ink); margin-bottom: 0.9rem; }
+  .preamble p:last-child { margin-bottom: 0; }
+  .content { padding: 3rem 4.5rem; }
+  .article { margin-bottom: 3.5rem; }
+  .article:last-child { margin-bottom: 0; }
+  .article-header { display: flex; align-items: baseline; gap: 1rem; border-bottom: 2px solid var(--ink); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+  .article-num { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; color: var(--muted); flex-shrink: 0; }
+  h2 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+  h3 { font-family: var(--sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin: 1.8rem 0 0.7rem; }
+  p { font-family: var(--serif); font-size: 0.96rem; font-weight: 300; line-height: 1.78; color: var(--ink); margin-bottom: 0.9rem; }
+  p:last-child { margin-bottom: 0; }
+  p strong { font-weight: 700; }
+  .clauses { list-style: none; margin: 0.6rem 0 1.2rem; counter-reset: clause; }
+  .clauses li { counter-increment: clause; display: flex; gap: 1rem; font-size: 0.93rem; padding: 0.55rem 0; border-bottom: 1px solid var(--rule); align-items: flex-start; font-family: var(--serif); font-weight: 300; line-height: 1.65; }
+  .clauses li:last-child { border-bottom: none; }
+  .clauses li::before { content: counter(clause, decimal-leading-zero); font-family: var(--mono); font-size: 0.62rem; color: var(--muted); flex-shrink: 0; margin-top: 0.32rem; }
+  .member-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1rem 0 1.5rem; }
+  .member-card { background: var(--paper); padding: 1.4rem 1.5rem; }
+  .member-card.span2 { grid-column: 1 / -1; background: var(--warm); }
+  .member-type { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+  .member-name { font-family: var(--sans); font-size: 0.98rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
+  .rights { list-style: none; margin: 0; }
+  .rights li { font-family: var(--sans); font-size: 0.82rem; padding: 0.22rem 0; display: flex; gap: 0.5rem; color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .rights li:last-child { border-bottom: none; }
+  .y { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .n { color: var(--muted); font-weight: 700; flex-shrink: 0; }
+  .pathway-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1rem 0 1.5rem; }
+  .pathway-card { background: var(--paper); padding: 1.3rem 1.4rem; }
+  .pathway-num { font-family: var(--mono); font-size: 1.2rem; color: var(--accent); margin-bottom: 0.4rem; }
+  .pathway-name { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
+  .pathway-desc { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .coi-box { border: 1px solid var(--gold); background: var(--gold-pale); padding: 1.2rem 1.5rem; margin: 1rem 0 1.5rem; }
+  .coi-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .coi-box p { font-size: 0.9rem; margin: 0; }
+  .gov-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1rem 0 1.5rem; }
+  .gov-cell { background: var(--paper); padding: 1.1rem 1.2rem; }
+  .gov-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+  .gov-value { font-family: var(--sans); font-size: 0.92rem; font-weight: 600; color: var(--ink); margin-bottom: 0.2rem; }
+  .gov-desc { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
+  .infra-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.86rem; }
+  .infra-table thead tr { background: var(--ink); color: white; }
+  .infra-table th { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1rem; text-align: left; }
+  .infra-table td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--rule); font-family: var(--sans); color: var(--ink); vertical-align: top; line-height: 1.5; }
+  .infra-table tr:nth-child(even) td { background: var(--warm); }
+  .layer-tag { font-family: var(--mono); font-size: 0.6rem; padding: 0.1rem 0.4rem; }
+  .tag-hard { background: var(--accent-pale); color: var(--accent); border: 1px solid #c0d8c8; }
+  .tag-soft { background: var(--gold-pale); color: var(--gold); border: 1px solid #d8c898; }
+  .pull { border-left: 3px solid var(--accent); background: var(--accent-pale); padding: 1rem 1.4rem; margin: 1.2rem 0; }
+  .pull p { font-size: 0.97rem; font-style: italic; font-weight: 400; margin: 0; }
+  .timeline { margin: 1rem 0 1.5rem; display: flex; gap: 0; position: relative; }
+  .timeline::before { content: ""; position: absolute; top: 1.3rem; left: 1.3rem; right: 1.3rem; height: 2px; background: linear-gradient(90deg, var(--accent), var(--gold)); }
+  .tl-phase { flex: 1; text-align: center; position: relative; z-index: 1; }
+  .tl-dot { width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--paper); border: 2px solid var(--accent); margin: 0 auto 0.7rem; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.65rem; color: var(--accent); }
+  .tl-phase:last-child .tl-dot { border-color: var(--gold); color: var(--gold); }
+  .tl-name { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+  .tl-desc { font-family: var(--sans); font-size: 0.72rem; color: var(--muted); line-height: 1.4; padding: 0 0.3rem; }
+  .sig-block { border-top: 1px solid var(--rule); padding-top: 2rem; margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+  .sig-line { border-bottom: 1px solid var(--ink); height: 2.5rem; margin-bottom: 0.3rem; }
+  .sig-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  footer { border-top: 1px solid var(--rule); padding: 1.2rem 4.5rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+  .footer-id { font-family: var(--mono); font-size: 0.58rem; color: var(--muted); letter-spacing: 0.08em; line-height: 1.8; }
+  .footer-set { font-family: var(--mono); font-size: 0.58rem; color: var(--accent); text-align: right; line-height: 1.8; }
+  .print-btn { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: white; border: none; padding: 0.65rem 1.1rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; cursor: pointer; text-transform: uppercase; }
+  .print-btn:hover { background: var(--ink); }
+  @media print { body { background: white; padding: 0; } .page { box-shadow: none; } .print-btn { display: none; } }
+  @media (max-width: 700px) {
+    .cover, .preamble, .content, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .member-grid, .pathway-grid, .gov-grid { grid-template-columns: 1fr; }
+    .member-card.span2 { grid-column: 1; }
+    .timeline { flex-direction: column; gap: 1.5rem; }
+    .timeline::before { display: none; }
+    .sig-block { grid-template-columns: 1fr; }
+    h1 { font-size: 2.1rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+      }
+
+  /* ── Back to index ── */
+  .back-to-index {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 4rem;
+    background: var(--ink, #161412);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .back-to-index a {
+    font-family: var(--mono, 'DM Mono', monospace);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-to-index a:hover { color: white; }
+  @media print { .back-to-index { display: none; } }
+  @media (max-width: 680px) { .back-to-index { padding-left: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="back-to-index"><a href="01-civics-ecosystem-toolkit-index.html">&#8592; Civics Ecosystem Toolkit</a></div>
+
+  <div class="cover">
+    <div class="cover-kicker">Founding Charter</div>
+    <span class="cover-emblem">&#9881;</span>
+    <h1>Civics Ecosystem Cooperative</h1>
+    <p class="cover-sub">A worker cooperative building shared infrastructure for the democratic ecosystem</p>
+    <div class="cover-chips">
+      <div class="chip primary">Founding Charter</div>
+      <div class="chip">Draft for Discussion</div>
+      <div class="chip">v1.2 &mdash; May 2026</div>
+      <div class="chip">Independent of any party</div>
+    </div>
+  </div>
+
+  <div class="preamble" id="preamble">
+    <div class="preamble-label">Preamble</div>
+    <p>This Charter is written from within the Australian civic context &mdash; a multi-party electoral democracy with established institutions, a registered party system, and a mature civil society. The problems it addresses are immediate and local: duplicated infrastructure costs, vendor dependency, barriers to new political entrants, and knowledge that disappears when people move on.</p>
+    <p>At the same time, the Cooperative recognises that democratic participation takes many forms. Electoral multi-party competition is one tradition among several. Consensus governance, deliberative assemblies, community self-governance, mutual aid, and cooperative organisation are all legitimate expressions of people&rsquo;s right to participate in the decisions that affect their lives &mdash; recognised in Article 21 of the Universal Declaration of Human Rights and in countless cultural and civic traditions the world over. The tools and knowledge this Cooperative builds should be useful across those traditions, not only within the one it was born from.</p>
+    <p>Political parties, community organisations, unions, advocacy groups, neighbourhood councils, and grassroots movements share a structural problem: each independently builds and pays for the same civic infrastructure &mdash; membership systems, coordination tools, voting software, facilitation methodologies, organising knowledge &mdash; at full price, with no shared maintenance, no interoperability, and no collective memory.</p>
+    <p>The Civics Ecosystem Cooperative exists to tend this ecosystem by building its infrastructure &mdash; formal and informal. It is a worker cooperative owned and governed by individual members, building the tools, standards, knowledge, and shared capacity that democratic participation runs on. Not for any single organisation, party, or ideology. For the ecosystem itself.</p>
+    <p>The Cooperative is designed to persist through political disagreement. The infrastructure it maintains is pre-competitive &mdash; needed by all civic actors regardless of whether those actors trust each other. It operates at a layer below where political conflict happens. Distrust between parties does not break it, because it was never built on trust between parties. It was built on shared interest in the infrastructure itself.</p>
+  </div>
+
+  <div class="content">
+
+    <div class="article" id="art1">
+      <div class="article-header"><span class="article-num">Article I</span><h2>Name, Definition, Purpose &amp; Principles</h2></div>
+      <h3>1.1 Name</h3>
+      <p>The organisation shall be known as the <strong>Civics Ecosystem Cooperative</strong> (the Cooperative, or CEC). The name reflects both the scope &mdash; the civic ecosystem as a whole &mdash; and the mode of work: building the infrastructure, formal and informal, that the ecosystem runs on.</p>
+      <h3>1.2 What &ldquo;civic infrastructure&rdquo; means</h3>
+      <p>The Cooperative uses &ldquo;infrastructure&rdquo; to mean any foundational resource that civic organisations share a need for but should not have to build independently. Two kinds:</p>
+      <ul class="clauses">
+        <li><strong>Formal infrastructure</strong> &mdash; technical tools, open-source software, data standards, APIs, and interoperability specifications. The hard layer that democratic operations run on. Examples: membership CRMs, internal voting platforms, electoral registration toolkits, donation processing systems, volunteer coordination software.</li>
+        <li><strong>Informal infrastructure</strong> &mdash; facilitation knowledge, citizens jury methodologies, community organising patterns, training materials, shared institutional practice, and documentation. The soft layer that democratic participation depends on. Examples: participatory budgeting facilitation guides, deliberation frameworks, onboarding resources for new parties or independent candidates, post-election retrospectives.</li>
+      </ul>
+      <p>Both kinds are equally within scope. Both are currently duplicated at enormous collective cost. Both are the Cooperative&rsquo;s legitimate concern.</p>
+      <h3>1.3 Purpose</h3>
+      <ul class="clauses">
+        <li>To build, maintain, and freely distribute open-source tools and infrastructure &mdash; formal and informal &mdash; that serve civic organisations and individuals across the political and community spectrum.</li>
+        <li>To reduce the technical, financial, and knowledge barriers facing political parties, community groups, neighbourhood councils, independent candidates, unions, mutual aid networks, and advocacy organisations.</li>
+        <li>To demonstrate and promote participatory democratic practices through the Cooperative&rsquo;s own operation &mdash; while remaining open to the plurality of democratic and civic governance traditions that exist across cultures.</li>
+        <li>To function as a sustainable worker cooperative in which contribution &mdash; financial or labour &mdash; is the basis of membership and governance.</li>
+        <li>To persist as a shared commons through periods of political disagreement, serving the ecosystem&rsquo;s infrastructure needs regardless of the political relationships between its member organisations&rsquo; affiliates.</li>
+        <li>To ensure that the tools and knowledge built by the Cooperative are accessible &mdash; in terms of language, technical literacy, and cost &mdash; to the broadest possible range of civic actors.</li>
+      </ul>
+      <h3>1.4 Founding Principles</h3>
+      <ul class="clauses">
+        <li><strong>Ecosystem stewardship.</strong> The Cooperative serves the health of the civic ecosystem as a whole. Its outputs must be available to all eligible organisations regardless of political affiliation. No tool or resource may be designed to advantage any single party or movement.</li>
+        <li><strong>Infrastructure before product.</strong> The Cooperative prioritises foundational, shared, pre-competitive resources over bespoke solutions. What can be built once and used by all should be.</li>
+        <li><strong>Open by default.</strong> All outputs are open source under licences permitting free use, modification, and redistribution. Proprietary exceptions require a supermajority member vote.</li>
+        <li><strong>One member, one vote.</strong> Governance is individual. No organisation holds votes. Contribution level does not alter voting weight.</li>
+        <li><strong>Labour and capital are equal entry points.</strong> Contributing code, facilitation, documentation, design, community outreach, translation, accessibility review, or other recognised labour is equivalent to financial contribution as a basis for membership. Technical skills are not a prerequisite for participation.</li>
+        <li><strong>Non-discrimination.</strong> Membership and participation in the Cooperative are open to all individuals regardless of nationality, language, cultural background, economic status, political tradition, or form of civic engagement. The Cooperative does not privilege one democratic tradition over another as a condition of participation.</li>
+        <li><strong>Democratic pluralism.</strong> The Cooperative builds tools for electoral party democracy because that is the context it was born from. It acknowledges that this is one form of democratic participation among many &mdash; including consensus governance, deliberative assemblies, community self-governance, mutual aid, and cooperative organisation. Its tools and knowledge should be adaptable across these traditions, not locked to one.</li>
+        <li><strong>Mutual aid as democratic practice.</strong> Mutual aid &mdash; communities organising to meet each other&rsquo;s needs directly &mdash; is a legitimate and historically significant form of civic and democratic participation, not merely a charitable activity. The Cooperative treats it as such.</li>
+        <li><strong>Accessible by design.</strong> Tools and knowledge produced by the Cooperative should meet recognised accessibility standards, support multiple languages where resources allow, and be usable by people with varying levels of technical literacy.</li>
+        <li><strong>Transparent affiliation.</strong> Members may declare organisational affiliation. Affiliations are visible to all members. They confer no additional rights.</li>
+        <li><strong>Demonstrate what we build.</strong> The Cooperative itself operates by participatory budgeting and deliberative process, serving as a live proof of concept for the practices and tools it develops.</li>
+        <li><strong>Structural persistence.</strong> The Cooperative is designed to outlast any particular political configuration. Its governance, funding, and infrastructure must be resilient to changes in the political relationships between parties whose members participate in it.</li>
+      </ul>
+    </div>
+
+    <div class="article" id="art2">
+      <div class="article-header"><span class="article-num">Article II</span><h2>Membership</h2></div>
+      <h3>2.1 Individuals only</h3>
+      <p>The Cooperative has individual members, not organisational members. Political parties, unions, NGOs, and community groups are not members of the Cooperative. They may fund it, use its outputs, and send their people to join as individuals &mdash; but the organisation itself holds no seat, no vote, and no governance role.</p>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-type">Category A</div>
+          <div class="member-name">Contributing Member</div>
+          <ul class="rights">
+            <li><span class="y">&#10003;</span> Full voting rights in all governance cycles</li>
+            <li><span class="y">&#10003;</span> May submit and sponsor project proposals</li>
+            <li><span class="y">&#10003;</span> May stand for elected positions</li>
+            <li><span class="y">&#10003;</span> Access to all project workspaces</li>
+            <li><span class="y">&#10003;</span> May declare organisational affiliation</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-type">Category B</div>
+          <div class="member-name">Observer Member</div>
+          <ul class="rights">
+            <li><span class="n">&ndash;</span> No voting rights</li>
+            <li><span class="y">&#10003;</span> May attend open deliberation forums</li>
+            <li><span class="y">&#10003;</span> May comment publicly on proposals</li>
+            <li><span class="y">&#10003;</span> Access to public project updates</li>
+            <li><span class="y">&#10003;</span> Clear pathway to Contributing Member</li>
+          </ul>
+        </div>
+        <div class="member-card span2">
+          <div class="member-type">Not a member category &mdash; Organisational Beneficiaries &amp; Funders</div>
+          <div class="member-name">Organisations (parties, unions, NGOs, community groups)</div>
+          <ul class="rights">
+            <li><span class="n">&ndash;</span> No membership. No votes. No governance role.</li>
+            <li><span class="y">&#10003;</span> May contribute financially to the Cooperative&rsquo;s fund</li>
+            <li><span class="y">&#10003;</span> May use and deploy all open-source outputs freely</li>
+            <li><span class="y">&#10003;</span> Listed transparently as funders or beneficiaries</li>
+            <li><span class="y">&#10003;</span> Staff and supporters may join individually as Contributing Members</li>
+          </ul>
+        </div>
+      </div>
+      <h3>2.2 Entry pathways</h3>
+      <div class="pathway-grid">
+        <div class="pathway-card">
+          <div class="pathway-num">01</div>
+          <div class="pathway-name">Via a party fund</div>
+          <div class="pathway-desc">A party adopts the Party Members Fund amendment. Members who direct contributions to the CEC become individual Contributing Members. The party&rsquo;s administrative role gives it no governance standing.</div>
+        </div>
+        <div class="pathway-card">
+          <div class="pathway-num">02</div>
+          <div class="pathway-name">Direct financial</div>
+          <div class="pathway-desc">Any individual contributes directly at any level on the sliding scale. Equal rights at all levels. No party intermediary required or implied.</div>
+        </div>
+        <div class="pathway-card">
+          <div class="pathway-num">03</div>
+          <div class="pathway-name">Labour contribution</div>
+          <div class="pathway-desc">Contribute recognised labour to a funded project &mdash; code, facilitation, documentation, design, community outreach, translation, or accessibility review. Verified labour earns full membership. No financial contribution required. Technical skills are not a prerequisite.</div>
+        </div>
+      </div>
+      <div class="coi-box" style="margin-top:1rem;">
+        <div class="coi-label">&#9873; Flagged gap &mdash; labour verification</div>
+        <p>What counts as verified labour, who verifies it, and what minimum threshold applies are not defined here. These are operational details the founding membership should resolve before the first cycle opens &mdash; documented in whatever operational guide the Standing Committee maintains. Options include: sponsorship by an existing Contributing Member, milestone sign-off on a delivered project, or Standing Committee review. The right approach will depend on the Cooperative&rsquo;s scale and culture at the time.</p>
+      </div>
+      <h3>2.3 Organisational affiliation and transparency</h3>
+      <p>Contributing Members may declare an organisational affiliation. Declarations are voluntary but strongly encouraged. All affiliation data is visible to all members. The Cooperative publishes an aggregate affiliation summary before each governance vote. Affiliation is a transparency mechanism &mdash; not a disqualification mechanism and not a source of additional rights.</p>
+      <h3>2.4 Conflict of interest</h3>
+      <div class="coi-box">
+        <div class="coi-label">&#9878; Norm, not rule &mdash; declared conflicts</div>
+        <p>When a Contributing Member votes on a proposal that would directly benefit their declared employer or affiliated organisation, they are expected to declare this at the start of deliberation. Declaration does not disqualify the member from voting &mdash; it makes the potential influence visible. Deliberate non-declaration of a material conflict, if raised and sustained by three or more Contributing Members, may be grounds for a membership review by the Standing Committee.</p>
+      </div>
+      <h3>2.5 Membership maintenance</h3>
+      <ul class="clauses">
+        <li>Contributing Member status is renewed each cycle by maintaining the minimum contribution threshold &mdash; financial, labour, or combined.</li>
+        <li>Members who do not meet the threshold revert to Observer status and may re-enter via either pathway.</li>
+        <li>There is no penalty for lapsing. The Cooperative recognises that civic contribution is often episodic.</li>
+      </ul>
+    </div>
+
+    <div class="article" id="art3">
+      <div class="article-header"><span class="article-num">Article III</span><h2>Governance &amp; Decision-Making</h2></div>
+
+      <h3>3.1 Governing principle</h3>
+      <p>The Cooperative uses three complementary governance mechanisms, each operating at a different frequency and scale. The goal is democratic legitimacy without participation fatigue &mdash; members are asked to engage meaningfully but not constantly.</p>
+      <p>The governance model is designed to be respectful of members&rsquo; mental bandwidth. Democratic legitimacy does not require constant voting. The mechanisms here distribute participation across the membership over time rather than demanding universal engagement with every decision. This principle should guide any future evolution of the governance model: if a proposed mechanism increases the burden on members without a clear democratic benefit, it should be reconsidered.</p>
+
+      <div class="gov-grid">
+        <div class="gov-cell">
+          <div class="gov-label">Tier 1</div>
+          <div class="gov-value">Strategic Assembly</div>
+          <div class="gov-desc">Full membership. Every two years. Overall direction, budget parameters, Charter changes, Standing Committee elections.</div>
+        </div>
+        <div class="gov-cell">
+          <div class="gov-label">Tier 2</div>
+          <div class="gov-value">Sortition Panels</div>
+          <div class="gov-desc">Randomly selected Contributing Members. Per project cycle. Project deliberation and funding recommendations.</div>
+        </div>
+        <div class="gov-cell">
+          <div class="gov-label">Tier 3</div>
+          <div class="gov-value">Standing Committee</div>
+          <div class="gov-desc">Five elected members. Ongoing. Administration, eligibility review, audit coordination. No substantive decision-making power.</div>
+        </div>
+      </div>
+
+      <h3>3.2 Tier 1 — Strategic Assembly</h3>
+      <p>The Strategic Assembly convenes every two years and is the Cooperative&rsquo;s primary expression of collective member will. All Contributing Members participate. It is the one occasion on which the full membership votes together &mdash; kept infrequent to preserve its weight and encourage genuine engagement rather than routine approval.</p>
+      <ul class="clauses">
+        <li>Sets the Cooperative&rsquo;s overall direction and priorities for the coming two-year period.</li>
+        <li>Approves the budget parameters, eligibility criteria, and individual-mode thresholds within which Sortition Panels will operate during the coming period.</li>
+        <li>Elects the Standing Committee.</li>
+        <li>Reviews and ratifies any Charter amendments proposed since the previous Assembly. Charter changes require a two-thirds supermajority with a 30% participation quorum.</li>
+        <li>Receives the Standing Committee&rsquo;s report on the preceding period, including financial audit results and project outcomes.</li>
+        <li>Direction decisions require a simple majority.</li>
+        <li><strong>Advisory dissent.</strong> Any Contributing Member or group of Contributing Members who voted against a direction decision may submit a written dissent within 14 days of the Assembly. Dissents are published to all members and appended to the Assembly record. Dissent does not override the decision but creates a formal record of minority views that Sortition Panels must acknowledge when their deliberations touch on the dissented direction.</li>
+      </ul>
+
+      <h3>3.2.1 Governance hierarchy</h3>
+      <p>The following hierarchy resolves conflicts between governance tiers. Higher tiers take precedence over lower tiers. Within a tier, later decisions take precedence over earlier ones.</p>
+      <ul class="clauses">
+        <li><strong>Tier 1 — Charter.</strong> The founding Charter and any subsequent amendments ratified by the Strategic Assembly. Supersedes all other instruments.</li>
+        <li><strong>Tier 2 — Strategic Assembly directions.</strong> Budget parameters, eligibility criteria, and direction decisions set at the most recent Strategic Assembly. Sortition Panels operate within these parameters and may not override them.</li>
+        <li><strong>Tier 3 — Sortition Panel recommendations.</strong> Project funding decisions made by Sortition Panels within the parameters set by the Strategic Assembly. Once the ratification window closes without a successful objection, panel recommendations are binding on the Standing Committee for disbursement purposes.</li>
+        <li><strong>Tier 4 — Standing Committee decisions.</strong> Administrative decisions made by the Standing Committee within the scope of its role. Cannot override Sortition Panel recommendations or Strategic Assembly directions.</li>
+      </ul>
+      <p>Where a Sortition Panel&rsquo;s recommendation would require exceeding a budget parameter set by the Strategic Assembly, the panel must seek Standing Committee confirmation before finalising its recommendation. The Standing Committee may approve a minor variance (up to 10% of the parameter) without returning to the Strategic Assembly; larger variances require an extraordinary Assembly motion.</p>
+
+      <h3>3.3 Tier 2 — Sortition Panels</h3>
+      <p>Project-level decisions are made by randomly selected panels of Contributing Members &mdash; a form of sortition, the same democratic mechanism used by citizens assemblies globally. Random selection distributes the governance burden, avoids the capture risk of self-selected committees, and produces more considered decisions through deliberation rather than instant voting.</p>
+
+      <h3>3.3.1 Panel composition</h3>
+      <ul class="clauses">
+        <li>Each project cycle, a panel of 7 to 12 Contributing Members is selected by random draw from the full Contributing Member pool. Panel size scales with membership &mdash; the Standing Committee sets the exact number each cycle within this range.</li>
+        <li>No member may serve on consecutive panels. Members who served in the previous cycle are excluded from the draw and return to the pool after one cycle&rsquo;s rest.</li>
+        <li>No more than two panel members may share an organisational affiliation. If the random draw produces a panel that violates this, affected members are redrawn until the constraint is met.</li>
+        <li>Panel service is expected but not compulsory. A member drawn who cannot serve may decline; the Standing Committee redraws for that position. Repeated declines without cause may be noted in the member&rsquo;s record.</li>
+        <li><strong>Minimum membership threshold.</strong> Sortition panels require a minimum of 50 Contributing Members to function meaningfully. Below this threshold, the Cooperative operates under open deliberation — all Contributing Members participate in project decisions directly, with the same ratification window applying. The Standing Committee monitors membership levels each cycle. When the 50-member threshold is first reached and sustained for one full cycle, the transition to sortition is confirmed by the Standing Committee and announced to all members before the next proposal window opens. The transition does not require a Strategic Assembly vote. If membership subsequently falls below 50, the Standing Committee may revert to open deliberation for that cycle with notice to all members.</li>
+      </ul>
+
+      <h3>3.3.2 Panel process</h3>
+      <ul class="clauses">
+        <li><strong>Proposal window (8 weeks).</strong> Any Contributing Member &mdash; or external team with a member sponsor &mdash; may submit a project proposal. All proposals are public from submission. Observer Members may comment but not propose.</li>
+        <li><strong>Eligibility review (2 weeks).</strong> The Standing Committee checks proposals against Article IV criteria. Process gate only &mdash; cannot reject on political or ideological grounds. Rejections published with reasons, subject to member challenge within 7 days.</li>
+        <li><strong>Panel deliberation (4 weeks).</strong> The selected panel receives all eligible proposals. Proposers present their case. Panel members ask questions publicly &mdash; the deliberation record is visible to all members. The panel may request additional evidence, invite expert input, and ask proposers to refine submissions. Observer and Contributing Members may submit written questions to the panel but do not direct its deliberations.</li>
+        <li><strong>Panel recommendation.</strong> The panel produces a funded project list with reasoned recommendations &mdash; explaining why each project was funded or not. Recommendations are expressed as proportional allocations across the available cycle budget. The reasoning is published to all members.</li>
+        <li><strong>Ratification window (14 days).</strong> The full Contributing Membership reviews the panel&rsquo;s recommendations and reasoning. If fewer than one-third of Contributing Members formally object, the recommendation stands and disbursement begins. If one-third or more object, the recommendation returns to the panel for reconsideration with the objections recorded. The panel may revise or reaffirm; the revised recommendation is final.</li>
+        <li><strong>Milestone disbursement.</strong> Funded projects receive tranches against published milestones. Milestone reports are public. Undelivered milestones trigger Standing Committee review before further tranches are released. Unused funds return to the next cycle pool.</li>
+      </ul>
+
+      <h3>3.3.3 Individual mode — unchanged</h3>
+      <p>Any Contributing Member may independently back a specific eligible project outside the panel process. Individual-mode allocations activate when a threshold of members or total pledged amount &mdash; set by the Strategic Assembly &mdash; is met within the cycle window. Contributions pledged to a project that does not reach threshold are returned to contributing members. Individual mode operates in parallel with the sortition process and is not subject to panel ratification.</p>
+
+      <h3>3.4 Tier 3 — Standing Committee</h3>
+      <ul class="clauses">
+        <li>Five Contributing Members elected at each Strategic Assembly for a two-year term.</li>
+        <li>No more than two members may share an organisational affiliation.</li>
+        <li>Responsibilities: administers eligibility reviews; manages the fund account with dual-signatory requirements above a threshold set by the Strategic Assembly; coordinates the annual audit; manages the sortition draw process; and publishes cycle retrospectives.</li>
+        <li>Holds no power over project funding decisions. Its administrative role is explicitly separate from the substantive governance exercised by Sortition Panels and the Strategic Assembly.</li>
+        <li>Standing Committee decisions may be challenged by any Contributing Member and overturned by simple majority vote of Contributing Members.</li>
+        <li>The Standing Committee publishes an annual report to all members regardless of whether a Strategic Assembly is convening that year.</li>
+      </ul>
+
+      <h3>3.5 Audit and financial controls</h3>
+      <ul class="clauses">
+        <li>An independent financial audit is conducted annually and published to all members.</li>
+        <li>The audit is tabled at the Strategic Assembly for member review.</li>
+        <li>No revenue may flow back to any founding organisation, political party, or Standing Committee member in their organisational capacity.</li>
+      </ul>
+
+    </div>
+
+    <div class="article" id="art4">
+      <div class="article-header"><span class="article-num">Article IV</span><h2>What the Cooperative Builds</h2></div>
+      <p>Eligible projects fall across two categories of civic infrastructure. Both are equally within scope and equally legitimate uses of the Cooperative&rsquo;s resources.</p>
+      <table class="infra-table">
+        <thead><tr><th>Layer</th><th>Category</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td><span class="layer-tag tag-hard">Formal</span></td><td><strong>Shared operational tools</strong></td><td>Open-source CRM replacing NationBuilder; member voting software; AEC-compliant donation processing; volunteer coordination platforms</td></tr>
+          <tr><td><span class="layer-tag tag-hard">Formal</span></td><td><strong>Internal democracy platforms</strong></td><td>Participatory budgeting software; online deliberation tools; policy consultation platforms; internal ballot systems</td></tr>
+          <tr><td><span class="layer-tag tag-hard">Formal</span></td><td><strong>Electoral access tools</strong></td><td>Party registration toolkits; HTV generators; scrutineering apps; candidate onboarding systems</td></tr>
+          <tr><td><span class="layer-tag tag-hard">Formal</span></td><td><strong>Standards &amp; interoperability</strong></td><td>Electoral results schemas; volunteer coordination APIs; membership data portability standards</td></tr>
+          <tr><td><span class="layer-tag tag-soft">Informal</span></td><td><strong>Deliberative practice toolkits</strong></td><td>Citizens jury facilitation guides; participatory budgeting runbooks; community deliberation frameworks</td></tr>
+          <tr><td><span class="layer-tag tag-soft">Informal</span></td><td><strong>Organising knowledge</strong></td><td>Volunteer onboarding templates; new party establishment documentation; independent candidate support packs</td></tr>
+          <tr><td><span class="layer-tag tag-soft">Informal</span></td><td><strong>Civic education resources</strong></td><td>Preferential voting explainers; Senate counting visualisers; parliamentary process guides</td></tr>
+          <tr><td><span class="layer-tag tag-soft">Informal</span></td><td><strong>Institutional memory</strong></td><td>Post-election retrospectives; lessons-learned documentation; case studies in participatory governance</td></tr>
+        </tbody>
+      </table>
+      <h3>4.1 Ineligibility criteria</h3>
+      <ul class="clauses">
+        <li>Projects that primarily benefit a single political party&rsquo;s electoral position, candidate selection, or fundraising capacity.</li>
+        <li>Projects that are primarily commercial in nature, where the Cooperative&rsquo;s resources would substitute for commercial investment.</li>
+        <li>Projects whose outputs would be proprietary or restricted from free use by other civic organisations.</li>
+        <li>Projects that would restrict or disadvantage political participation by any legal party, movement, or candidate.</li>
+      </ul>
+    </div>
+
+    <div class="article" id="art5">
+      <div class="article-header"><span class="article-num">Article V</span><h2>Funding &amp; Finance</h2></div>
+      <ul class="clauses">
+        <li><strong>Individual member contributions</strong> &mdash; financial contributions from Contributing Members, whether arriving directly or via a party&rsquo;s Member-Directed Community Fund.</li>
+        <li><strong>Organisational funding</strong> &mdash; grants, donations, or sponsorships from organisations. All organisational funding publicly disclosed. Organisational funders receive no governance rights.</li>
+        <li><strong>Grant income</strong> &mdash; applications to public or philanthropic grant programmes aligned with the Cooperative&rsquo;s purpose.</li>
+        <li><strong>Service agreements</strong> &mdash; where the Cooperative provides maintenance or support services for tools it has built, on terms approved by the membership.</li>
+      </ul>
+      <p>The Cooperative maintains a ring-fenced project fund account separate from any operational account, with independent co-signatories required for disbursements above a threshold set by the membership. An independent financial audit is conducted annually and published to all members before the next cycle opens. No revenue may flow back to any founding organisation, political party, or Standing Committee member in their organisational capacity.</p>
+    </div>
+
+    <div class="article" id="art6">
+      <div class="article-header"><span class="article-num">Article VI</span><h2>Independence &amp; Evolution</h2></div>
+      <div class="pull">
+        <p>The Cooperative is independent of any single founding organisation from its first day of operation. Any party, union, community group, or individual contributing to its bootstrap has no special governance standing by virtue of that contribution.</p>
+      </div>
+      <h3>6.1 Relationship to the Party Members Fund</h3>
+      <p>Some parties may establish a Member-Directed Community Fund (Party Members Fund) through which their members can direct contributions to the Cooperative among other eligible destinations. This is one of several possible funding mechanisms &mdash; not the primary or defining one. The party&rsquo;s administrative role gives it no governance standing. If a party dissolves its Fund or its members choose to direct contributions elsewhere, the Cooperative continues unaffected.</p>
+      <p>This separation means the Cooperative persists through changes in party priorities, political relationships between parties, and electoral cycles. The infrastructure it maintains continues regardless of which parties trust each other or choose to participate.</p>
+      <h3>6.2 Incorporation pathway</h3>
+      <div class="timeline">
+        <div class="tl-phase"><div class="tl-dot">Y1</div><div class="tl-name">Pilot</div><div class="tl-desc">First full allocation cycle. Governance model tested with real money. Membership open to all individuals.</div></div>
+        <div class="tl-phase"><div class="tl-dot">Y2</div><div class="tl-name">Expand</div><div class="tl-desc">Open membership recruited across parties, unions, and civic orgs. Multiple funding channels established.</div></div>
+        <div class="tl-phase"><div class="tl-dot">Y3</div><div class="tl-name">Incorporate</div><div class="tl-desc">Independent non-profit cooperative entity. All founding parties and organisations become equal beneficiaries.</div></div>
+        <div class="tl-phase"><div class="tl-dot">&#9733;</div><div class="tl-name">Commons</div><div class="tl-desc">Self-sustaining civic infrastructure cooperative. Owned by its members. Accountable to no single organisation.</div></div>
+      </div>
+      <h3>6.3 Dissolution</h3>
+      <ul class="clauses">
+        <li>Dissolution requires a two-thirds supermajority of Contributing Members with a 50% participation quorum.</li>
+        <li>A minimum six-month wind-down period is required to honour existing project commitments.</li>
+        <li>On dissolution, all assets and intellectual property are transferred to a compatible open-source civic organisation as determined by member vote. No assets may be distributed to any political party or commercial entity.</li>
+      </ul>
+      <div class="sig-block">
+        <div><div class="sig-line"></div><div class="sig-label">Founding Member</div></div>
+        <div><div class="sig-line"></div><div class="sig-label">Founding Member</div></div>
+        <div><div class="sig-line"></div><div class="sig-label">Date of Adoption</div></div>
+      </div>
+    </div>
+
+    <div class="article" id="art7">
+      <div class="article-header"><span class="article-num">Article VII</span><h2>Evolution Note — Adapting Beyond the Australian Context</h2></div>
+
+      <p>This Charter was written within the Australian civic context. The problems it addresses &mdash; duplicated party infrastructure costs, NationBuilder dependency, barriers to new political entrants, knowledge loss &mdash; are real and immediate in that context. The governance mechanisms it proposes &mdash; participatory budgeting, citizens juries, individual membership, one member one vote &mdash; reflect democratic practices with currency in Australian civil society.</p>
+
+      <p>If the Cooperative or its tools are adopted in other jurisdictions, or if its membership expands to include people from different civic traditions, the following questions would need to be revisited by the membership of that time. This note does not answer them. It flags them honestly so they are not overlooked.</p>
+
+      <h3>7.1 Different electoral and party frameworks</h3>
+      <p>The Party Members Fund amendment is explicitly designed for the Australian registered party system and references AEC compliance requirements. In other jurisdictions, the equivalent instrument would need to reflect different electoral laws, party registration frameworks, and disclosure obligations. The CEC Charter itself is written to be jurisdiction-neutral, but the PMF amendment is not and should not pretend to be.</p>
+
+      <h3>7.2 Plurality of democratic traditions</h3>
+      <p>Electoral multi-party competition is one democratic tradition. Others &mdash; consensus governance common in many Pacific and Indigenous traditions, deliberative assemblies, sortition, village and neighbourhood governance, cooperative self-governance &mdash; are equally legitimate expressions of the right to participate in community decisions. If the Cooperative&rsquo;s membership expands to include people from these traditions, the governance model itself &mdash; currently built on majority-vote participatory budgeting &mdash; may need to be revisited or made more flexible. A supermajority requirement for structural change is a partial concession to consensus principles; it may not be sufficient.</p>
+
+      <h3>7.3 Contexts where civic participation carries personal risk</h3>
+      <p>In some countries and contexts, membership of political organisations, participation in civic databases, or association with political parties carries personal risk &mdash; including state surveillance, legal jeopardy, or social harm. Tools built by the Cooperative that handle membership data, voting records, or political affiliation must be designed with these risks in mind if they are to be used internationally. Privacy by design, data minimisation, and user control over personal data are not optional features in these contexts &mdash; they are safety requirements. Any international deployment of CEC-built tools should include an explicit privacy and digital rights review.</p>
+
+      <h3>7.4 Language and accessibility</h3>
+      <p>The Cooperative&rsquo;s founding documents are in English. Its tools, at launch, will likely be built in English. This is a practical constraint, not a values statement. If the Cooperative grows beyond English-speaking contexts, meaningful participation requires translation &mdash; of documents, interfaces, and facilitation processes &mdash; not merely token multilingual support. The accessibility principle in Article 1.4 commits the Cooperative to this aspiration. Delivering on it will require deliberate resource allocation by the membership.</p>
+
+      <h3>7.5 Cooperative legal structures</h3>
+      <p>Worker cooperative incorporation varies significantly across jurisdictions. The legal structure available in Australia may not be available, recognised, or appropriate elsewhere. Any international expansion would require local legal advice on the most appropriate equivalent entity structure in the relevant jurisdiction.</p>
+
+      <h3>7.6 Mutual aid and non-electoral civic traditions</h3>
+      <p>In many communities &mdash; particularly those with histories of exclusion from formal political institutions &mdash; mutual aid networks, community associations, and informal governance structures are the primary democratic institutions, more immediate and trusted than electoral parties. If the Cooperative expands to serve these communities, it should do so as a learner, not as an exporter of a particular democratic model. The tools and knowledge it builds should be offered as resources, not prescriptions.</p>
+
+      <h3>7.7 Digital rights, data privacy, and political data — flagged gap</h3>
+      <p>This Charter does not yet contain explicit provisions governing the privacy and ownership of member data, the handling of political affiliation records, or the data rights of people who use tools built by the Cooperative. This is a deliberate deferral, not an oversight &mdash; these questions are complex, jurisdiction-specific, and best resolved by the founding membership rather than pre-written into a draft Charter.</p>
+      <p>However, they must be resolved before the first governance cycle opens. Political affiliation data is sensitive in every jurisdiction, and acutely so in some. Under UDHR Article 12, people have a right to privacy that extends to their political associations. Under emerging data rights frameworks in many countries, individuals have rights over their own data including the right to access, correct, and delete it. The Cooperative&rsquo;s tools &mdash; membership databases, voting records, coordination platforms &mdash; will handle all of these categories.</p>
+      <p>The founding membership should address at minimum: who owns member data; what happens to that data on dissolution; what privacy standards govern tools built by the Cooperative; whether tools built for use in higher-risk jurisdictions require additional privacy protections by design; and how data minimisation principles apply to membership and governance records.</p>
+
+      <h3>7.8 Consensus and deliberative governance within the Cooperative itself — flagged gap</h3>
+      <p>The Cooperative&rsquo;s internal governance currently uses majority-vote participatory budgeting and a supermajority threshold for structural decisions. This reflects one democratic tradition. As membership grows and diversifies &mdash; particularly if it includes people from consensus governance backgrounds &mdash; the question of whether the governance model itself should evolve will arise.</p>
+      <p>This Charter does not prescribe an answer. It flags the question so it is not overlooked. The supermajority requirement for structural change provides some protection against rapid shifts, but the founding membership should discuss explicitly whether additional consensus mechanisms &mdash; for example, extended deliberation periods before structural votes, or formal objection and response processes &mdash; are appropriate as the Cooperative matures.</p>
+
+      <h3>7.9 Insolvency, asset protection, and the relationship with party funds — flagged gap</h3>
+      <p>The Party Members Fund amendment includes provisions for what happens to Fund assets if a party becomes insolvent or dissolves &mdash; including a recommendation to establish Fund accounts on trust terms and a named fallback transferee. These provisions name the Civics Ecosystem Cooperative as a default transferee where it exists as an incorporated entity.</p>
+      <p>This creates a dependency worth flagging. If the CEC is not yet incorporated when a party wind-up occurs, the fallback chain in the PMF amendment defaults to a registered charity with compatible purposes. The CEC&rsquo;s incorporation timeline (Article VI) should therefore be treated as operationally significant &mdash; the faster the CEC incorporates, the stronger the protection for PMF assets across all adopting parties.</p>
+      <p>More broadly, the question of asset protection across jurisdictions is unresolved. Australian insolvency law governs the PMF provisions as written. If the CEC expands internationally, or if parties in other jurisdictions adopt equivalent instruments, the interaction between local insolvency law, trust structuring options, and cross-border asset transfer will require jurisdiction-specific legal advice. This Charter does not address those questions &mdash; it flags them for the membership and any future international adaptation effort.</p>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-id">Civics Ecosystem Cooperative &mdash; Founding Charter &mdash; v1.2<br>Independent of any party. Open to all.</div>
+    <div class="footer-set">The Civics Ecosystem Toolkit<br>Party Members Fund &#8599; &middot; Policy Briefing &#8599; &middot; Introduction &#8599;</div>
+  </footer>
+</div>
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>

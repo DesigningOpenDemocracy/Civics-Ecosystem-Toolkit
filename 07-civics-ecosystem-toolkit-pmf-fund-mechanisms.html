@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fund Mechanism Ideas — Party Members Fund Companion Note</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #161412;
+    --paper: #f6f2eb;
+    --warm: #f0ebe0;
+    --accent: #1d4e6b;
+    --accent-pale: #e8f0f5;
+    --green: #1e5c30;
+    --green-pale: #e8f2eb;
+    --gold: #8a6f2e;
+    --gold-pale: #f5f0e0;
+    --muted: #6b6358;
+    --rule: #d6d0c4;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Spectral', Georgia, serif;
+    --sans: 'Barlow', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #c8c4b8;
+    font-family: var(--serif);
+    color: var(--ink);
+    padding: 2.5rem 1rem;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 6px 48px rgba(0,0,0,0.15);
+  }
+
+  .page::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent) 60%, var(--gold) 100%);
+  }
+
+  /* ── Cover ── */
+  .cover {
+    padding: 3.5rem 4.5rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .cover-kicker {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .cover-kicker::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+
+  .cover-sub {
+    font-family: var(--serif);
+    font-size: 0.96rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .cover-note {
+    background: var(--gold-pale);
+    border: 1px solid #d4c090;
+    padding: 1rem 1.4rem;
+  }
+
+  .cover-note p {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Content ── */
+  .content {
+    padding: 3rem 4.5rem;
+  }
+
+  /* ── Intro ── */
+  .intro {
+    margin-bottom: 3rem;
+  }
+
+  p {
+    font-family: var(--serif);
+    font-size: 0.96rem;
+    font-weight: 300;
+    line-height: 1.78;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+  p strong { font-weight: 700; }
+
+  /* ── Mechanism cards ── */
+  .mechanism {
+    border: 1px solid var(--rule);
+    margin-bottom: 2rem;
+    background: white;
+  }
+
+  .mechanism:last-child { margin-bottom: 0; }
+
+  .mech-header {
+    padding: 1.2rem 1.6rem;
+    background: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .mech-num {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
+  .mech-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .mech-tag {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .tag-simple { background: #3d8c52; color: white; }
+  .tag-moderate { background: #c9a84c; color: white; }
+  .tag-complex { background: #8b2e1a; color: white; }
+
+  .mech-body {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .mech-desc {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+
+  .mech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 1rem;
+  }
+
+  .mech-cell {
+    background: var(--paper);
+    padding: 0.9rem 1rem;
+  }
+
+  .mech-cell-label {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .mech-cell-value {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  .mech-examples {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.55;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.8rem;
+    margin-top: 0.2rem;
+  }
+
+  .mech-examples strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ── Comparison table ── */
+  .comparison {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.84rem;
+  }
+
+  .comparison thead tr { background: var(--ink); color: white; }
+
+  .comparison th {
+    font-family: var(--sans);
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+  }
+
+  .comparison td {
+    padding: 0.65rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--sans);
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.45;
+  }
+
+  .comparison tr:nth-child(even) td { background: var(--warm); }
+
+  .dot-simple { color: #3d8c52; font-weight: 700; }
+  .dot-moderate { color: #c9a84c; font-weight: 700; }
+  .dot-complex { color: #8b2e1a; font-weight: 700; }
+
+  /* ── Design guidance ── */
+  .guidance {
+    background: var(--accent-pale);
+    border-left: 3px solid var(--accent);
+    padding: 1.4rem 1.8rem;
+    margin: 2rem 0;
+  }
+
+  .guidance-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .guidance p {
+    font-size: 0.92rem;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ── Section heading ── */
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  h2:first-of-type { margin-top: 0; }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.2rem 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-id {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+
+  .footer-set {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    color: var(--accent);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .print-btn:hover { background: var(--ink); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+    .print-btn { display: none; }
+  }
+
+  @media (max-width: 680px) {
+    .cover, .content, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .mech-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 1.7rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+      }
+
+  /* ── Back to index ── */
+  .back-to-index {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 4rem;
+    background: var(--ink, #161412);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .back-to-index a {
+    font-family: var(--mono, 'DM Mono', monospace);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-to-index a:hover { color: white; }
+  @media print { .back-to-index { display: none; } }
+  @media (max-width: 680px) { .back-to-index { padding-left: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="back-to-index"><a href="01-civics-ecosystem-toolkit-index.html">&#8592; Civics Ecosystem Toolkit</a></div>
+
+  <div class="cover">
+    <div class="cover-kicker">The Civics Ecosystem Toolkit — Companion Note</div>
+    <h1>Fund Mechanism Ideas</h1>
+    <p class="cover-sub">A reference survey of allocation mechanisms for parties designing their Fund Governance Policy</p>
+    <div class="cover-note">
+      <p><strong>This note has no legal force.</strong> It is a reference document for parties designing their Party Fund Governance Policy under the Member-Directed Community Fund constitutional amendment. The mechanisms described here are options to consider — not requirements, not endorsements. The party chooses what fits its membership size, culture, and appetite for complexity. All mechanisms are valid provided they comply with the governance principles in clause [X.X.6] of the amendment.</p>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="intro">
+      <p>The Party Members Fund constitutional amendment deliberately says nothing about <em>how</em> members make allocation decisions. That design work belongs to the party, expressed through its Fund Governance Policy. This note surveys the main approaches parties and civic organisations have used or are experimenting with — what each one is, what it requires, what it trades off, and where it has been used.</p>
+      <p>No mechanism is perfect. Each makes a different trade-off between expressiveness, simplicity, participation burden, and resistance to gaming. The right choice depends on your Fund membership size, the technical literacy of your members, and how much governance complexity you want to manage. Most parties should start simple and evolve toward more expressive mechanisms as the Fund matures.</p>
+    </div>
+
+    <h2>The mechanisms</h2>
+
+    <!-- 1. Deliberation panel -->
+    <div class="mechanism" id="m01">
+      <div class="mech-header">
+        <span class="mech-num">01</span>
+        <span class="mech-name">Deliberation Panel with Ratification</span>
+        <span class="mech-tag tag-simple">Simple</span>
+      </div>
+      <div class="mech-body">
+        <p class="mech-desc">A small panel of members considers all eligible proposals, deliberates publicly, and produces a funded recommendation with written reasoning. The full membership reviews and can ratify or object within a short window. How panel members are selected — random draw, rotation, nomination — is left to the party.</p>
+        <div class="mech-grid">
+          <div class="mech-cell">
+            <div class="mech-cell-label">Bandwidth demand</div>
+            <div class="mech-cell-value">Low for most members. Panel members carry the deliberation load. Others only engage if they want to object.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Good for</div>
+            <div class="mech-cell-value">Small to medium funds. Considered, reasoned decisions. Building deliberative culture. Starting point for new funds.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Watch out for</div>
+            <div class="mech-cell-value">Panel capture if self-selected. Ratification becoming rubber stamp if members don't engage. Needs clear panel selection rules.</div>
+          </div>
+        </div>
+        <p class="mech-examples"><strong>Used by:</strong> Citizens assemblies globally (Ireland, France, Australia). Most cooperative governance models at small scale.</p>
+      </div>
+    </div>
+
+    <!-- 2. Open participatory budgeting -->
+    <div class="mechanism" id="m02">
+      <div class="mech-header">
+        <span class="mech-num">02</span>
+        <span class="mech-name">Open Participatory Budgeting</span>
+        <span class="mech-tag tag-simple">Simple</span>
+      </div>
+      <div class="mech-body">
+        <p class="mech-desc">All members vote directly on how to allocate the cycle budget across approved proposals. Each member distributes their share of the fund across proposals as they choose. Simple majority or proportional allocation determines outcomes.</p>
+        <div class="mech-grid">
+          <div class="mech-cell">
+            <div class="mech-cell-label">Bandwidth demand</div>
+            <div class="mech-cell-value">Moderate. Every member needs to evaluate all proposals each cycle. Fatigue risk at scale.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Good for</div>
+            <div class="mech-cell-value">Small engaged memberships. Maximum democratic participation. Simple to understand and administer.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Watch out for</div>
+            <div class="mech-cell-value">Participation drop-off as fund grows. Decisions made by activist minority if turnout falls. Populist bias toward well-known projects.</div>
+          </div>
+        </div>
+        <p class="mech-examples"><strong>Used by:</strong> Porto Alegre (Brazil), Paris municipal budget, many local councils globally. Classic civic participatory budgeting model.</p>
+      </div>
+    </div>
+
+    <!-- 3. Pledge threshold / Kickstarter -->
+    <div class="mechanism" id="m03">
+      <div class="mech-header">
+        <span class="mech-num">03</span>
+        <span class="mech-name">Pledge Threshold (Kickstarter Model)</span>
+        <span class="mech-tag tag-simple">Simple</span>
+      </div>
+      <div class="mech-body">
+        <p class="mech-desc">Members individually pledge their contribution toward specific destinations. A destination only activates when a minimum threshold of pledges or total pledged amount is reached within the cycle window. Below threshold, contributions return to members. No panel, no collective vote — pure individual conviction.</p>
+        <div class="mech-grid">
+          <div class="mech-cell">
+            <div class="mech-cell-label">Bandwidth demand</div>
+            <div class="mech-cell-value">Very low. Members engage only when they feel strongly. No obligation to evaluate all proposals.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Good for</div>
+            <div class="mech-cell-value">Individual mode in parallel with collective mechanisms. Niche projects with passionate minority support. Low-overhead activation.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Watch out for</div>
+            <div class="mech-cell-value">Threshold calibration — too high and nothing activates; too low and everything does. No deliberative quality check on what gets funded.</div>
+          </div>
+        </div>
+        <p class="mech-examples"><strong>Used by:</strong> Kickstarter, Pozible, Open Collective funding campaigns. Common in open source project funding.</p>
+      </div>
+    </div>
+
+    <!-- 4. Token allocation -->
+    <div class="mechanism" id="m04">
+      <div class="mech-header">
+        <span class="mech-num">04</span>
+        <span class="mech-name">Token Allocation (Budget Shopping)</span>
+        <span class="mech-tag tag-moderate">Moderate</span>
+      </div>
+      <div class="mech-body">
+        <p class="mech-desc">Each member receives a budget of tokens each cycle and spends them across eligible proposals like shopping — allocating more tokens to things they care about most, fewer to others. Proposals are funded proportionally to total tokens received. Captures intensity of preference rather than just binary support.</p>
+        <div class="mech-grid">
+          <div class="mech-cell">
+            <div class="mech-cell-label">Bandwidth demand</div>
+            <div class="mech-cell-value">Low to moderate. More expressive than a single vote but still simple to execute. Members control how much they engage.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Good for</div>
+            <div class="mech-cell-value">Larger funds with many proposals. More nuanced allocation than yes/no voting. Intuitive once members understand it.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Watch out for</div>
+            <div class="mech-cell-value">Needs clear token budget rules. Risk of gaming through strategic token hoarding. Requires member education at launch.</div>
+          </div>
+        </div>
+        <p class="mech-examples"><strong>Used by:</strong> Token allocation models used in various DAO governance frameworks and civic innovation funds. Gitcoin has used adapted versions alongside quadratic funding.</p>
+      </div>
+    </div>
+
+    <!-- 5. Quadratic funding -->
+    <div class="mechanism" id="m05">
+      <div class="mech-header">
+        <span class="mech-num">05</span>
+        <span class="mech-name">Quadratic Funding</span>
+        <span class="mech-tag tag-complex">Complex</span>
+      </div>
+      <div class="mech-body">
+        <p class="mech-desc">Members contribute directly to proposals of their choice. A matching pool amplifies contributions based on the number of unique contributors rather than total amount — meaning many small contributions from different people attract more matching than a few large ones. Designed to fund broadly supported projects over well-funded ones.</p>
+        <div class="mech-grid">
+          <div class="mech-cell">
+            <div class="mech-cell-label">Bandwidth demand</div>
+            <div class="mech-cell-value">Low to participate. Moderate to understand the mechanism fully. Members just contribute; the formula does the work.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Good for</div>
+            <div class="mech-cell-value">Funding public goods with broad community support. Reducing influence of large individual donors. Larger, mature funds.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Watch out for</div>
+            <div class="mech-cell-value">Sybil attacks (fake identities to game matching). Complex to explain. Needs identity verification to work well. Mathematical opacity may erode trust.</div>
+          </div>
+        </div>
+        <p class="mech-examples"><strong>Used by:</strong> Gitcoin (Ethereum ecosystem funding). Subject of significant academic research — see Buterin, Hitzig &amp; Weyl (2019) &ldquo;A Flexible Design for Funding Public Goods.&rdquo;</p>
+      </div>
+    </div>
+
+    <!-- 6. Conviction voting -->
+    <div class="mechanism" id="m06">
+      <div class="mech-header">
+        <span class="mech-num">06</span>
+        <span class="mech-name">Conviction Voting</span>
+        <span class="mech-tag tag-complex">Complex</span>
+      </div>
+      <div class="mech-body">
+        <p class="mech-desc">Members continuously signal support for proposals over time. Voting power accumulates the longer a member sustains support for a proposal — rewarding persistent conviction over tactical last-minute voting. Proposals reach a funding threshold when accumulated conviction is sufficient. No fixed voting window — funding happens continuously as conviction builds.</p>
+        <div class="mech-grid">
+          <div class="mech-cell">
+            <div class="mech-cell-label">Bandwidth demand</div>
+            <div class="mech-cell-value">Very low ongoing. No deadlines. Members set and forget, updating support as priorities change.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Good for</div>
+            <div class="mech-cell-value">Continuous funding rather than cycle-based. Long-running funds. Rewarding sustained community priorities over flash-in-the-pan proposals.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Watch out for</div>
+            <div class="mech-cell-value">Requires software to track conviction over time. Hardest to explain to members. Risk of incumbent proposals entrenching. Needs a minimum viable member base to function.</div>
+          </div>
+        </div>
+        <p class="mech-examples"><strong>Used by:</strong> Gardens (1Hive). Theoretical foundations in Commons Stack research. Emerging in DAO governance.</p>
+      </div>
+    </div>
+
+    <!-- 7. Hybrid / staged -->
+    <div class="mechanism" id="m07">
+      <div class="mech-header">
+        <span class="mech-num">07</span>
+        <span class="mech-name">Hybrid and Staged Approaches</span>
+        <span class="mech-tag tag-moderate">Moderate</span>
+      </div>
+      <div class="mech-body">
+        <p class="mech-desc">Most mature funds combine mechanisms. A common hybrid: deliberation panel screens and recommends a shortlist (quality filter), then token allocation or participatory budgeting determines final allocation among shortlisted proposals (preference expression). Individual pledge threshold runs in parallel for niche projects that wouldn&rsquo;t make the shortlist. Each layer does what it does best.</p>
+        <div class="mech-grid">
+          <div class="mech-cell">
+            <div class="mech-cell-label">Bandwidth demand</div>
+            <div class="mech-cell-value">Variable by design. The party can tune which layers demand participation and which are optional.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Good for</div>
+            <div class="mech-cell-value">Mature funds with clear sense of what they need. Combining deliberative quality with expressive allocation. Managing large proposal volumes.</div>
+          </div>
+          <div class="mech-cell">
+            <div class="mech-cell-label">Watch out for</div>
+            <div class="mech-cell-value">Complexity compounds. Each layer adds administration. Start simple and add layers only when you have evidence they&rsquo;re needed.</div>
+          </div>
+        </div>
+        <p class="mech-examples"><strong>Used by:</strong> Many mature participatory budgeting programmes and cooperative governance bodies at scale. Various DAO governance models combine curation with token or quadratic mechanisms.</p>
+      </div>
+    </div>
+
+    <!-- Comparison table -->
+    <h2 id="compare">At a glance</h2>
+
+    <table class="comparison">
+      <thead>
+        <tr>
+          <th>Mechanism</th>
+          <th>Complexity</th>
+          <th>Bandwidth</th>
+          <th>Best membership size</th>
+          <th>Expresses intensity?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Deliberation panel</strong></td>
+          <td><span class="dot-simple">●</span> Low</td>
+          <td>Low</td>
+          <td>Any</td>
+          <td>Via panel reasoning</td>
+        </tr>
+        <tr>
+          <td><strong>Open participatory budgeting</strong></td>
+          <td><span class="dot-simple">●</span> Low</td>
+          <td>Moderate</td>
+          <td>Small–medium</td>
+          <td>Partially</td>
+        </tr>
+        <tr>
+          <td><strong>Pledge threshold</strong></td>
+          <td><span class="dot-simple">●</span> Low</td>
+          <td>Very low</td>
+          <td>Any</td>
+          <td>Yes — via pledge size</td>
+        </tr>
+        <tr>
+          <td><strong>Token allocation</strong></td>
+          <td><span class="dot-moderate">●</span> Moderate</td>
+          <td>Low–moderate</td>
+          <td>Medium–large</td>
+          <td>Yes — via token spend</td>
+        </tr>
+        <tr>
+          <td><strong>Quadratic funding</strong></td>
+          <td><span class="dot-complex">●</span> High</td>
+          <td>Low to participate</td>
+          <td>Large</td>
+          <td>Yes — via breadth of support</td>
+        </tr>
+        <tr>
+          <td><strong>Conviction voting</strong></td>
+          <td><span class="dot-complex">●</span> High</td>
+          <td>Very low ongoing</td>
+          <td>Large</td>
+          <td>Yes — via time</td>
+        </tr>
+        <tr>
+          <td><strong>Hybrid / staged</strong></td>
+          <td><span class="dot-moderate">●</span> Variable</td>
+          <td>Variable</td>
+          <td>Medium–large</td>
+          <td>Depends on design</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Design guidance -->
+    <h2 id="guidance">Design guidance</h2>
+
+    <div class="guidance">
+      <div class="guidance-label">Starting recommendation</div>
+      <p>Most parties should launch with a <strong>deliberation panel for collective decisions</strong> and a <strong>pledge threshold for individual ones</strong>. These are the simplest mechanisms, require no special software, and are explainable to any member without technical background. They also leave room to evolve — a deliberation panel can be replaced by token allocation later without any constitutional change, just a Fund Governance Policy update.</p>
+      <p>Resist the temptation to start with a complex mechanism because it sounds more democratic. Complexity that members don&rsquo;t understand or engage with produces worse outcomes than a simple mechanism they trust.</p>
+    </div>
+
+    <div class="guidance">
+      <div class="guidance-label">When to evolve</div>
+      <p>Consider moving to more expressive mechanisms — token allocation, quadratic funding — when: the fund has more than 50 active members; participation in the current mechanism is consistently high; and members are asking for more nuanced ways to express preference. The sunset review after two cycles (required by the amendment) is the natural moment to make this assessment.</p>
+    </div>
+
+    <div class="guidance">
+      <div class="guidance-label">The one constraint that never changes</div>
+      <p>Whatever mechanism you choose, the governance principles in clause [X.X.6] of the amendment apply. Equal governance rights per member, regardless of contribution level. Mental bandwidth respect. Transparency. No technical literacy required. These are not design options &mdash; they are the floor every mechanism must sit above.</p>
+    </div>
+
+    <div class="guidance">
+      <div class="guidance-label">Further reading</div>
+      <p>Participatory budgeting: <em>Participatory Budgeting World Atlas</em> (Sintomer et al.). Quadratic funding: Buterin, Hitzig &amp; Weyl (2019). Conviction voting: <em>Conviction Voting: A Novel Continuous Decision Making Alternative to Governance</em> (Commons Stack). Token governance: <em>Governing the Commons</em> (Ostrom, 1990) remains the foundational text on collective resource governance regardless of mechanism.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-id">
+      Fund Mechanism Ideas — Companion Note — v1.2<br>
+      No legal force. Reference only. Part of the The Civics Ecosystem Toolkit.
+    </div>
+    <div class="footer-set">
+      The Civics Ecosystem Toolkit<br>
+      PMF Amendment ↗ · CEC Charter ↗ · Policy Briefing ↗
+    </div>
+  </footer>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>

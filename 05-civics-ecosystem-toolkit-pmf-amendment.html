@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Party Members Fund — Constitutional Amendment Template</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #161412;
+    --paper: #f6f2eb;
+    --warm: #f0ebe0;
+    --accent: #1d4e6b;
+    --accent-pale: #e8f0f5;
+    --red: #8b2e1a;
+    --gold: #8a6f2e;
+    --muted: #6b6358;
+    --rule: #d6d0c4;
+    --placeholder-bg: #fff8e0;
+    --placeholder-border: #d4a820;
+    --placeholder-text: #7a5c00;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Spectral', Georgia, serif;
+    --sans: 'Barlow', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #c8c4b8;
+    font-family: var(--serif);
+    color: var(--ink);
+    padding: 2.5rem 1rem;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 6px 48px rgba(0,0,0,0.16);
+  }
+
+  .page::before {
+    content: '';
+    display: block;
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent) 60%, var(--gold) 100%);
+  }
+
+  /* ── Cover ── */
+  .cover {
+    padding: 3.5rem 4.5rem 3rem;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .cover-kicker {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+
+  .cover-sub {
+    font-family: var(--serif);
+    font-size: 0.98rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+
+  .meta-chip {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .meta-chip.status {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Instructions banner ── */
+  .instructions {
+    background: var(--placeholder-bg);
+    border-bottom: 1px solid var(--placeholder-border);
+    padding: 1.2rem 4.5rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .instructions-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .instructions p {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--placeholder-text);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .ph {
+    font-family: var(--mono);
+    font-size: 0.82em;
+    background: var(--placeholder-bg);
+    border: 1px solid var(--placeholder-border);
+    padding: 0.05rem 0.3rem;
+    color: var(--placeholder-text);
+  }
+
+  /* ── Content ── */
+  .content {
+    padding: 3rem 4.5rem;
+  }
+
+  /* ── Parts ── */
+  .part {
+    margin-bottom: 3.5rem;
+  }
+
+  .part:last-child { margin-bottom: 0; }
+
+  .part-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .part-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 1.8rem 0 0.7rem;
+  }
+
+  p {
+    font-family: var(--serif);
+    font-size: 0.96rem;
+    font-weight: 300;
+    line-height: 1.78;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+  p strong { font-weight: 700; }
+
+  /* ── Legal block ── */
+  .legal {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--ink);
+    padding: 2rem 2.2rem;
+    margin: 1.2rem 0 1.8rem;
+  }
+
+  .legal-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .legal p {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.75;
+    margin-bottom: 0.8rem;
+  }
+
+  .legal p:last-child { margin-bottom: 0; }
+
+  .legal ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 0.8rem;
+  }
+
+  .legal ol li {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 0.4rem;
+    font-weight: 400;
+  }
+
+  /* ── Two-mode diagram ── */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.2rem 0 1.8rem;
+  }
+
+  .mode-card {
+    background: var(--paper);
+    padding: 1.5rem 1.6rem;
+  }
+
+  .mode-card.collective { background: var(--accent-pale); }
+
+  .mode-tag {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .mode-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .mode-desc {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 0.8rem;
+  }
+
+  .mode-mechanic {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    line-height: 1.7;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.7rem;
+  }
+
+  /* ── Destination types ── */
+  .dest-list {
+    list-style: none;
+    margin: 1rem 0 1.8rem;
+  }
+
+  .dest-list li {
+    display: flex;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+
+  .dest-list li:last-child { border-bottom: none; }
+
+  .dest-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .dest-body strong {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.1rem;
+    color: var(--ink);
+  }
+
+  .dest-body p {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* ── Unallocated flow ── */
+  .flow-strip {
+    background: var(--warm);
+    border: 1px solid var(--rule);
+    padding: 1.2rem 1.5rem;
+    margin: 1rem 0 1.8rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .flow-node {
+    text-align: center;
+  }
+
+  .flow-node-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .flow-node-value {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .flow-arrow {
+    font-family: var(--mono);
+    color: var(--muted);
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* ── Firewall ── */
+  .firewall {
+    border: 1px solid var(--red);
+    background: rgba(139,46,26,0.03);
+    padding: 1.3rem 1.6rem;
+    margin: 1rem 0 1.8rem;
+  }
+
+  .firewall-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.8rem;
+  }
+
+  .firewall ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  .firewall ul li {
+    font-family: var(--sans);
+    font-size: 0.87rem;
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    border-bottom: 1px solid rgba(139,46,26,0.12);
+    position: relative;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .firewall ul li:last-child { border-bottom: none; }
+
+  .firewall ul li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-size: 0.7rem;
+    font-weight: 700;
+    top: 0.4rem;
+  }
+
+  /* ── Checklist ── */
+  .checklist {
+    list-style: none;
+    margin: 1rem 0;
+  }
+
+  .checklist li {
+    display: flex;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: flex-start;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1.5px solid var(--rule);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  .check-content h4 {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+    color: var(--ink);
+  }
+
+  .check-content p {
+    font-family: var(--sans);
+    font-size: 0.81rem;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* ── Pull note ── */
+  .pull {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-pale);
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0 1.8rem;
+  }
+
+  .pull p {
+    font-size: 0.95rem;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.2rem 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-id {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+  }
+
+  .footer-set {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--accent);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .print-btn:hover { background: var(--ink); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+    .print-btn { display: none; }
+  }
+
+  @media (max-width: 680px) {
+    .cover, .content, .instructions, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cover { grid-template-columns: 1fr; }
+    .cover-meta { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    .mode-grid { grid-template-columns: 1fr; }
+    .flow-strip { grid-template-columns: 1fr; }
+    .flow-arrow { transform: rotate(90deg); }
+    h1 { font-size: 2rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+      }
+
+  /* ── Back to index ── */
+  .back-to-index {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 4rem;
+    background: var(--ink, #161412);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .back-to-index a {
+    font-family: var(--mono, 'DM Mono', monospace);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-to-index a:hover { color: white; }
+  @media print { .back-to-index { display: none; } }
+  @media (max-width: 680px) { .back-to-index { padding-left: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="back-to-index"><a href="01-civics-ecosystem-toolkit-index.html">&#8592; Civics Ecosystem Toolkit</a></div>
+
+  <div class="cover">
+    <div>
+      <div class="cover-kicker">The Civics Ecosystem Toolkit — Constitutional Amendment Template</div>
+      <h1>Party Members Fund</h1>
+      <p class="cover-sub">A template amendment giving party members democratic control<br>over a fund that goes beyond party operations</p>
+    </div>
+    <div class="cover-meta">
+      <div class="meta-chip status">Draft for Adoption</div>
+      <div class="meta-chip">v1.2 — May 2026</div>
+      <div class="meta-chip">Any registered party</div>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <div class="instructions-icon">📋</div>
+    <p><strong>Australian context.</strong> This amendment template is written for the Australian registered party system. It references Australian Electoral Commission (AEC) disclosure requirements and assumes a party constitutional structure consistent with Australian political party registration. Parties in other jurisdictions would need to adapt the legal clause text, compliance references, and fund structure to their own electoral law and party registration framework.</p>
+    <p>Replace all <span class="ph">[BRACKETED PLACEHOLDERS]</span> with your party's specific details before putting this to a vote. The constitutional clause text in the Legal Block may be inserted directly into your party's constitution under your existing membership or finance section. This amendment is ideology-neutral and adoptable by any registered Australian political party. Adopting it does not affiliate your party with any other party that has adopted it.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Part 1 -->
+    <div class="part" id="p1">
+      <div class="part-header">
+        <span class="part-num">Part 1</span>
+        <h2>What this amendment does</h2>
+      </div>
+
+      <p>This amendment establishes the <strong>Member-Directed Community Fund</strong> &mdash; known informally as the <strong>Party Members Fund</strong> &mdash; an optional mechanism through which party members can collectively and individually direct money toward causes, organisations, and projects that go beyond party operations.</p>
+
+      <p>The amendment is deliberately minimal. It establishes the fund, protects members from party interference, and guarantees equal governance rights per member. Everything else &mdash; how members join, what they contribute, how allocation decisions are made &mdash; is delegated to the <strong>Party Fund Governance Policy</strong>, a separate document the party sets and updates outside the constitution.</p>
+
+      <p>This separation is intentional. Locking mechanisms into a constitution makes them hard to improve. The Party Fund Governance Policy can evolve as the party learns &mdash; without a constitutional amendment every time. A companion reference document, the <strong>Fund Mechanism Ideas</strong> note, surveys possible allocation approaches the party may wish to consider when designing its Policy.</p>
+
+      <div class="pull">
+        <p>The party is the architect &mdash; it designs the system through its Fund Governance Policy. Members are the operators &mdash; they run it once deployed. The party cannot reach in and change the rules once a cycle is live. Nobody changes the rules during a match.</p>
+      </div>
+    </div>
+
+    <!-- Part 2 -->
+    <div class="part" id="p2">
+      <div class="part-header">
+        <span class="part-num">Part 2</span>
+        <h2>Constitutional amendment text</h2>
+      </div>
+
+      <p>Insert the following clause into <span class="ph">[PARTY NAME]</span>&rsquo;s constitution under <span class="ph">[RELEVANT SECTION &mdash; e.g. &ldquo;Section 4: Membership&rdquo; or &ldquo;Section 7: Finance&rdquo;]</span>:</p>
+
+      <div class="legal">
+        <div class="legal-label">&starf; Insert into party constitution &mdash; replace all placeholders before adoption</div>
+
+        <p><strong><span class="ph">[X.X]</span> Member-Directed Community Fund</strong></p>
+
+        <p><span class="ph">[X.X.1]</span> <em>Establishment.</em> The Party establishes a Member-Directed Community Fund (the Fund), known informally as the Party Members Fund. The Fund is an optional mechanism through which members may direct contributions toward eligible purposes beyond Party operations as defined in clause <span class="ph">[X.X.3]</span>. The Fund is governed by a Party Fund Governance Policy maintained by the Party in accordance with this clause.</p>
+
+        <p><span class="ph">[X.X.2]</span> <em>Separation of funds.</em> All Fund contributions are held in a dedicated account separate from Party operational accounts. No portion of Fund contributions may be used for Party operational, electoral, or administrative purposes. The Party acts as administrator and transfer agent only.</p>
+
+        <p><span class="ph">[X.X.3]</span> <em>Eligible purposes.</em> Fund contributions may be directed toward any purpose that:</p>
+        <ol type="a">
+          <li>Goes beyond Party operations;</li>
+          <li>Is not primarily for the private financial benefit of any individual member;</li>
+          <li>Has a genuine civic, community, social, or democratic purpose; and</li>
+          <li>Is lawful under applicable Commonwealth and state law.</li>
+        </ol>
+        <p>Eligible purposes include but are not limited to: mutual aid organisations, community infrastructure projects, civic technology development, open-source democratic tooling, civic research, cross-party collaborative initiatives, and contributions to independent civic organisations such as the Civics Ecosystem Cooperative.</p>
+
+        <p><span class="ph">[X.X.4]</span> <em>Excluded purposes.</em> Fund contributions may not be directed toward:</p>
+        <ol type="a">
+          <li>Party operational costs, staffing, or administrative expenses;</li>
+          <li>Electoral campaign expenditure as defined under the Commonwealth Electoral Act 1918;</li>
+          <li>Any purpose that primarily and directly benefits the Party&rsquo;s electoral position or candidate selection;</li>
+          <li>Private financial benefit of any member or party official; or</li>
+          <li>Any unlawful purpose.</li>
+        </ol>
+
+        <p><span class="ph">[X.X.5]</span> <em>Party Fund Governance Policy.</em> The Party shall maintain a Party Fund Governance Policy setting out how the Fund operates in practice. The Policy may specify: participation and contribution structures; allocation mechanisms; cycle parameters; eligibility review processes; and any other operational matter not addressed in this clause. The Policy may be updated by the Party at any time, subject to the constraints in clause <span class="ph">[X.X.6]</span>.</p>
+
+        <p><span class="ph">[X.X.6]</span> <em>Governance principles &mdash; non-negotiable constraints on the Policy.</em> Whatever mechanisms the Party Fund Governance Policy adopts, the Fund must at all times:</p>
+        <ol type="a">
+          <li><em>Respect members&rsquo; mental bandwidth</em> &mdash; governance mechanisms must not demand constant participation as a condition of meaningful membership;</li>
+          <li><em>Guarantee equal governance rights per member</em> &mdash; each participating member holds one equal share of governance authority regardless of contribution level, tenure, or any other factor. The Party may not design a participation or contribution structure that gives any member more governance weight than any other;</li>
+          <li><em>Maintain transparency</em> &mdash; deliberation records, recommendations, and allocation outcomes must be published to all Fund members;</li>
+          <li><em>Not require technical literacy as a prerequisite for participation;</em> and</li>
+          <li><em>Remain consistent with the eligible purposes and excluded purposes</em> in clauses <span class="ph">[X.X.3]</span> and <span class="ph">[X.X.4]</span>.</li>
+        </ol>
+
+        <p><span class="ph">[X.X.7]</span> <em>Mid-cycle protection.</em> The Party Fund Governance Policy may not be amended during an active allocation cycle. Policy changes take effect at the start of the next cycle. This constraint may not be waived by the Party or by Fund members.</p>
+
+        <p><span class="ph">[X.X.8]</span> <em>Party non-interference.</em> The Party may not:</p>
+        <ol type="a">
+          <li>Direct, veto, or override Fund member allocation decisions once a cycle is live;</li>
+          <li>Retain any portion of Fund contributions for Party operations;</li>
+          <li>Instruct Fund members how to direct their contributions or governance participation;</li>
+          <li>Appoint Party executives or office-bearers as Fund administrators while they hold Party office; or</li>
+          <li>Dissolve the Fund without a majority vote of active Fund members and a 90-day notice period to honour pending allocations.</li>
+        </ol>
+
+        <p><span class="ph">[X.X.9]</span> <em>Sunset review.</em> The Party Fund Governance Policy is subject to a mandatory member review after the first two completed cycles. The review does not automatically replace the Policy but requires the Party to present the Policy to Fund members for feedback and to publish a response to that feedback before the third cycle opens. Subsequent reviews occur at intervals determined by the Policy.</p>
+
+        <p><span class="ph">[X.X.10]</span> <em>Cessation.</em> A member may cease participation at the end of any membership year by written notice. Cessation does not affect standard Party membership. Any unallocated contributions held in reserve are returned to the member on cessation.</p>
+
+        <p><span class="ph">[X.X.11]</span> <em>Compliance.</em> Before operationalising the Fund, the Party shall seek advice from its legal or compliance officer regarding AEC disclosure obligations applicable to Fund contributions under Commonwealth and any applicable state electoral legislation.</p>
+
+        <p><span class="ph">[X.X.12]</span> <em>Data privacy &mdash; flagged gap.</em> The Fund will collect and hold member participation data. The Party shall determine, before operationalising the Fund, how member data is stored, who has access to it, what members&rsquo; rights are regarding their own data, and what happens to that data if the Fund is wound up. These questions must be addressed in accordance with applicable privacy legislation and the Party&rsquo;s existing data governance practices.</p>
+
+        <p><span class="ph">[X.X.13]</span> <em>Party insolvency, deregistration, or dissolution.</em></p>
+        <ol type="a">
+          <li><em>Protection of Fund assets.</em> Fund contributions are held for the benefit of Fund members and eligible civic purposes, and are not party property available for distribution to party creditors. The Party shall, before operationalising the Fund, seek legal advice on establishing the Fund account on trust terms so that contributions are held on trust and are beyond the reach of party creditors in the event of insolvency. This clause does not itself create a trust &mdash; it records the Party&rsquo;s obligation to seek appropriate legal structuring.</li>
+          <li><em>Mandatory transfer on wind-up.</em> In the event of the Party&rsquo;s deregistration, dissolution, or the appointment of a liquidator or administrator, any balance remaining in the Fund account must be transferred to an eligible destination within 90 days of the wind-up event, before any distribution of general party assets. The Fund Coordinator, or in their absence the most recently elected Standing Committee member of the Civics Ecosystem Cooperative who is also a Fund member, is responsible for effecting this transfer.</li>
+          <li><em>Default transferee.</em> If no Fund members remain available to direct the transfer within the 90-day window, the Fund balance is transferred to the Civics Ecosystem Cooperative if it exists as an incorporated entity at that time, or otherwise to a registered Australian charity with purposes consistent with the eligible purposes in clause <span class="ph">[X.X.3]</span> as determined by the most recently serving Fund Coordinator.</li>
+          <li><em>Early warning.</em> If the Party enters voluntary administration, receivership, or any formal insolvency process, the Fund Coordinator must notify all active Fund members within 7 days of becoming aware of that event, and must convene an emergency Fund member vote on the transfer destination within 30 days. Members may direct the balance to any eligible destination in that vote; the default transferee in clause (c) applies only if no quorum is reached.</li>
+          <li><em>Legal advice.</em> The Party shall seek specific legal advice on the interaction between this clause, applicable Australian insolvency law, and the trust structuring recommended in clause (a) before the Fund is operationalised. This clause is not a substitute for that advice.</li>
+        </ol>
+
+      </div>
+    </div>
+
+    <!-- Part 3 -->
+    <div class="part" id="p3">
+      <div class="part-header">
+        <span class="part-num">Part 3</span>
+        <h2>The Party Fund Governance Policy</h2>
+      </div>
+
+      <p>The Party Fund Governance Policy is where the party does its design work. It is a living document &mdash; not part of the constitution, updatable without a constitutional amendment, but constrained by the principles in clause [X.X.6] and the mid-cycle protection in clause [X.X.7].</p>
+
+      <p>The Policy should specify at minimum:</p>
+
+      <ul class="prose-list">
+        <li>How members join the Fund and what they contribute &mdash; any structure is permitted provided governance rights remain equal per member</li>
+        <li>The allocation mechanism &mdash; how members direct contributions collectively and individually. The companion <strong>Fund Mechanism Ideas</strong> note surveys possible approaches</li>
+        <li>Cycle length and timing &mdash; how long a cycle runs, when proposal windows open, when allocations close</li>
+        <li>Threshold parameters &mdash; whatever the mechanism requires: panel size, pledge thresholds, token budgets, or other operational parameters</li>
+        <li>Eligibility review process &mdash; who checks proposals against the constitutional eligible purposes, and how challenges are handled</li>
+        <li>Unallocated contributions &mdash; what happens to contributions not directed within a cycle</li>
+        <li>Administration &mdash; who the Fund Coordinator is, what their responsibilities are, how the annual fund statement is produced</li>
+      </ul>
+
+      <p>The Policy is the party&rsquo;s design document. Fund members operate within it. The party can update it between cycles as it learns. The one thing it cannot do is reach into a live cycle and change the rules.</p>
+    </div>
+
+    <!-- Part 4 -->
+    <div class="part" id="p4">
+      <div class="part-header">
+        <span class="part-num">Part 4</span>
+        <h2>What the Fund can support</h2>
+      </div>
+
+      <p>The Fund&rsquo;s eligibility rules are deliberately broad. &ldquo;Beyond party operations&rdquo; is the governing principle. The following are illustrative:</p>
+
+      <ul class="dest-list">
+        <li>
+          <span class="dest-icon">🤝</span>
+          <div class="dest-body">
+            <strong>Mutual aid organisations</strong>
+            <p>Community-based networks providing direct support &mdash; food, housing assistance, emergency relief &mdash; operating outside the party and independent of government.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dest-icon">🔧</span>
+          <div class="dest-body">
+            <strong>Civic technology and shared infrastructure</strong>
+            <p>Open-source tools, platforms, and standards that serve civic organisations broadly &mdash; including contributions to independent cooperatives like the Civics Ecosystem Cooperative.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dest-icon">🏘️</span>
+          <div class="dest-body">
+            <strong>Community infrastructure projects</strong>
+            <p>Local initiatives &mdash; community spaces, shared resources, neighbourhood networks &mdash; that strengthen civic life without serving the party&rsquo;s electoral interests directly.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dest-icon">🗳️</span>
+          <div class="dest-body">
+            <strong>Democratic participation initiatives</strong>
+            <p>Citizens juries, participatory governance pilots, civic education projects, and other efforts to deepen democratic practice beyond conventional electoral politics.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dest-icon">🔬</span>
+          <div class="dest-body">
+            <strong>Civic research</strong>
+            <p>Independent research into democratic participation, political organisation, or civic technology &mdash; openly published and not party-directed.</p>
+          </div>
+        </li>
+        <li>
+          <span class="dest-icon">🌐</span>
+          <div class="dest-body">
+            <strong>Cross-party collaborative initiatives</strong>
+            <p>Projects where members of different parties work together as individuals toward a shared civic goal &mdash; without requiring institutional trust between the parties themselves.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Part 5 -->
+    <div class="part" id="p5">
+      <div class="part-header">
+        <span class="part-num">Part 5</span>
+        <h2>What the party may not do</h2>
+      </div>
+
+      <p>These constraints are structural. They make the Fund credible as a genuinely member-directed instrument.</p>
+
+      <div class="firewall">
+        <div class="firewall-label">Hard limits &mdash; structural, not discretionary</div>
+        <ul>
+          <li>The Party may not direct, veto, or override Fund member allocation decisions once a cycle is live.</li>
+          <li>The Party may not retain any portion of Fund contributions for party operations.</li>
+          <li>The Party may not instruct Fund members how to direct their contributions or participation.</li>
+          <li>The Party may not design a contribution or participation structure that gives any member more governance weight than any other.</li>
+          <li>Party officials may not hold the Fund Coordinator role while also holding party executive office.</li>
+          <li>The Party may not dissolve the Fund without a majority vote of active Fund members and a 90-day notice period.</li>
+          <li>In the event of party insolvency or dissolution, Fund assets may not be distributed to party creditors. They must be transferred to an eligible destination per clause <span class="ph">[X.X.13]</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Part 6 -->
+    <div class="part" id="p6">
+      <div class="part-header">
+        <span class="part-num">Part 6</span>
+        <h2>Adoption checklist</h2>
+      </div>
+
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Fill in constitutional placeholders</h4>
+            <p>Party name, section references, and clause numbering. Do not adopt with placeholders remaining.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Draft the Party Fund Governance Policy</h4>
+            <p>Design the participation structure, allocation mechanism, cycle parameters, and administration before launch. The Fund Mechanism Ideas companion note surveys allocation options to consider.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Seek AEC compliance advice</h4>
+            <p>Confirm how Fund contributions are treated under Commonwealth disclosure requirements and applicable state electoral legislation.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Open a dedicated bank account</h4>
+            <p>Ring-fenced from party accounts from day one. Independent co-signatories required for disbursements above a threshold set in the Fund Governance Policy.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Appoint a Fund Coordinator</h4>
+            <p>Administrative role only. Cannot hold party executive office simultaneously.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Resolve data privacy questions</h4>
+            <p>Determine how Fund member participation data is stored, who can access it, what members&rsquo; rights are, and what happens to it if the Fund is wound up.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Seek trust structuring advice</h4>
+            <p>Get legal advice on establishing the Fund account on trust terms before launch. This is the strongest protection for Fund assets against party insolvency. A standard party bank account is not sufficient &mdash; specific trust structuring is required to protect contributions from party creditors in the event of insolvency.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Document the insolvency procedure</h4>
+            <p>The Fund Coordinator must know what to do if the party enters administration. Confirm who to notify, what the 7-day and 30-day obligations are under clause [X.X.13], and who serves as fallback if the Coordinator is unavailable.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Pass the amendment</h4>
+            <p>Follow your party&rsquo;s constitutional amendment procedure.</p>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <h4>Recruit founding Fund members</h4>
+            <p>Personally invite 20&ndash;50 engaged members before the first cycle opens. Quality of early participation shapes the Fund&rsquo;s culture more than quantity.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-id">
+      Party Members Fund — Constitutional Amendment Template — v1.2<br>
+      For internal party use. Ideology-neutral. Adoptable by any registered party.
+    </div>
+    <div class="footer-set">
+      The Civics Ecosystem Toolkit<br>
+      CEC Charter ↗ · Policy Briefing ↗ · Introduction ↗
+    </div>
+  </footer>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>

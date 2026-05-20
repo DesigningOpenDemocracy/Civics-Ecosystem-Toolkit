@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Civics Ecosystem Cooperative — Introduction</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,500&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0d1a0e;
+    --paper: #f3f0e7;
+    --green: #1e5c30;
+    --green-light: #3d8c52;
+    --green-pale: #e8f2eb;
+    --gold: #9a7c2a;
+    --ink: #0d1a0e;
+    --muted: #546050;
+    --rule: #ccc8bb;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Fraunces', Georgia, serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3rem 1rem;
+    font-family: var(--serif);
+  }
+
+  .sheet {
+    background: var(--paper);
+    width: 100%;
+    max-width: 780px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sheet::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: linear-gradient(90deg, var(--green) 0%, var(--green) 65%, var(--gold) 100%);
+  }
+
+  /* ── Header ── */
+  header {
+    padding: 3rem 3.5rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.8rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--green);
+  }
+
+  .abbrev-block {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .abbrev {
+    font-family: var(--mono);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .version {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Body grid ── */
+  .body {
+    padding: 2.5rem 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 3rem;
+  }
+
+  /* ── Lede — full width ── */
+  .lede {
+    grid-column: 1 / -1;
+    border-left: 3px solid var(--green);
+    background: var(--green-pale);
+    padding: 1.3rem 1.7rem;
+  }
+
+  .lede p {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 300;
+    line-height: 1.72;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .lede p strong { font-weight: 700; }
+
+  /* ── Block ── */
+  .block { }
+
+  .block-label {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .block p {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 0.55rem;
+  }
+
+  .block p:last-child { margin-bottom: 0; }
+  .block p strong { font-weight: 700; }
+
+  /* ── Arrow list ── */
+  .arrow-list {
+    list-style: none;
+    margin: 0;
+  }
+
+  .arrow-list li {
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--ink);
+    padding: 0.38rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .arrow-list li:last-child { border-bottom: none; }
+
+  .arrow-list li .arr {
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── Infrastructure split — full width ── */
+  .infra-split {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .infra-half {
+    background: var(--paper);
+    padding: 1.3rem 1.5rem;
+  }
+
+  .infra-kind {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.3rem;
+  }
+
+  .infra-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.45rem;
+  }
+
+  .infra-desc {
+    font-family: var(--serif);
+    font-size: 0.84rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 0.6rem;
+  }
+
+  .infra-examples {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ── Join paths — full width dark block ── */
+  .join-block {
+    grid-column: 1 / -1;
+    background: var(--ink);
+    padding: 1.8rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .join-path { }
+
+  .join-num {
+    font-family: var(--mono);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--green-light);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .join-title {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 0.3rem;
+  }
+
+  .join-desc {
+    font-family: var(--serif);
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(243,240,231,0.6);
+    line-height: 1.5;
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 1.2rem 3.5rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-tagline {
+    font-family: var(--serif);
+    font-size: 0.84rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  .footer-docs {
+    font-family: var(--mono);
+    font-size: 0.57rem;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .print-btn:hover { background: var(--green-light); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .print-btn { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    header { grid-template-columns: 1fr; gap: 1rem; }
+    .abbrev-block { text-align: left; }
+    .body { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; }
+    .lede, .infra-split, .join-block { grid-column: 1; }
+    .infra-split, .join-block { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; padding: 1.2rem 1.5rem; }
+    h1 { font-size: 2rem; }
+  }
+
+  @media print {
+      }
+
+  /* ── Back to index ── */
+  .back-to-index {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 4rem;
+    background: var(--ink, #161412);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .back-to-index a {
+    font-family: var(--mono, 'DM Mono', monospace);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-to-index a:hover { color: white; }
+  @media print { .back-to-index { display: none; } }
+  @media (max-width: 680px) { .back-to-index { padding-left: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="back-to-index"><a href="01-civics-ecosystem-toolkit-index.html">&#8592; Civics Ecosystem Toolkit</a></div>
+
+  <header>
+    <div>
+      <div class="eyebrow">The Civics Ecosystem Toolkit — Introduction</div>
+      <h1>Civics<br><em>Ecosystem</em><br>Cooperative</h1>
+    </div>
+    <div class="abbrev-block">
+      <div class="abbrev">CEC</div>
+      <div class="version">v1.2 — May 2026</div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <div class="lede">
+      <p>Every party, union, community group, and civic organisation in Australia is separately paying for the same tools and reinventing the same knowledge. The same CRMs. The same volunteer platforms. The same citizens jury methodologies — rediscovered by each organisation that needs them, then lost when people move on. <strong>The Civics Ecosystem Cooperative builds that shared infrastructure once, maintains it collectively, and makes it freely available to everyone.</strong> It is a worker cooperative owned by the individuals who contribute to it — not by any party, organisation, or ideology.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-label">Context</div>
+      <p>The CEC was built from within the Australian civic context — a multi-party electoral democracy with established institutions and a registered party system. The problems it starts with are Australian problems. The tools it builds should be useful beyond that context, adaptable to consensus, deliberative, and community governance traditions as the Cooperative grows.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-label">The problem</div>
+      <p>NationBuilder charges each party separately. Every new organisation running a citizens jury reinvents the facilitation guide. Bespoke tools built by one party rot when the developer leaves. New parties spend months solving problems established parties already solved — and shared nothing.</p>
+      <p>This is a coordination failure, not a resource failure. The money and skill exist. They are never pooled.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-label">What gets built</div>
+      <ul class="arrow-list">
+        <li><span class="arr">→</span> Open-source tools all civic orgs share</li>
+        <li><span class="arr">→</span> Internal democracy platforms for parties and groups</li>
+        <li><span class="arr">→</span> Citizens jury and deliberation facilitation toolkits</li>
+        <li><span class="arr">→</span> Lower barriers for new parties and independents</li>
+        <li><span class="arr">→</span> Shared knowledge that survives when people leave</li>
+        <li><span class="arr">→</span> Open standards so tools work together across orgs</li>
+      </ul>
+    </div>
+
+    <div class="infra-split">
+      <div class="infra-half">
+        <div class="infra-kind">Formal infrastructure</div>
+        <div class="infra-title">The hard layer</div>
+        <div class="infra-desc">Technical tools and open standards that democratic operations run on. Built once, maintained collectively, used by all — at no per-party cost.</div>
+        <div class="infra-examples">CRMs · voting software · donation tools<br>electoral toolkits · data standards · APIs</div>
+      </div>
+      <div class="infra-half">
+        <div class="infra-kind">Informal infrastructure</div>
+        <div class="infra-title">The soft layer</div>
+        <div class="infra-desc">Facilitation knowledge, methodologies, and shared practice that democratic participation depends on. Documented and maintained so it doesn't disappear.</div>
+        <div class="infra-examples">citizens jury guides · organising playbooks<br>deliberation frameworks · institutional memory</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">Who governs it</div>
+      <p>Individual members — not organisations. Governance uses three tiers kept deliberately light: a Strategic Assembly of all members every two years sets overall direction; randomly selected sortition panels deliberate on projects each cycle; a small Standing Committee handles administration.</p>
+      <p>Sortition — random selection — means no member is asked to vote on everything. You might serve on a deliberation panel occasionally, like jury duty, rather than being asked to weigh in on every decision. The goal is democratic legitimacy without participation fatigue.</p>
+      <p>A civic organisation — e.g. a union, an advocacy group, or a community network — can fund the CEC and use everything it builds. Its staff or supporters join as individual members. The organisation itself has no governance role.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-label">Why it persists</div>
+      <p>The CEC operates at a layer below political conflict. Every party needs a CRM. Every organisation running a citizens jury needs facilitation methodology. These needs are shared regardless of whether the parties involved trust each other.</p>
+      <p><strong>Distrust between parties doesn't break the CEC</strong> because it was never built on trust between parties. It was built on shared interest in infrastructure itself.</p>
+    </div>
+
+    <div class="join-block">
+      <div class="join-path">
+        <div class="join-num">01</div>
+        <div class="join-title">Via a party fund</div>
+        <div class="join-desc">A party adopts the Party Members Fund amendment. Members who direct contributions to the CEC become individual Contributing Members in their own right.</div>
+      </div>
+      <div class="join-path">
+        <div class="join-num">02</div>
+        <div class="join-title">Direct financial</div>
+        <div class="join-desc">Any individual joins directly on a sliding contribution scale. All levels carry equal voting rights. No party intermediary required.</div>
+      </div>
+      <div class="join-path">
+        <div class="join-num">03</div>
+        <div class="join-title">Labour contribution</div>
+        <div class="join-desc">Contribute to a funded project — code, facilitation, documentation, design, community outreach, translation, or accessibility review. Verified labour earns full membership. Technical skills are not a prerequisite.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">Where it goes</div>
+      <p>The CEC starts small — pilot cycle, real money, governance model tested. By year two it recruits across parties and civic orgs. By year three it incorporates as an independent non-profit cooperative. Founding parties and organisations become one voice among many. No special standing. No ongoing control.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-label">One rule above all</div>
+      <p>Nothing the CEC builds may primarily benefit a single party's electoral position. The infrastructure serves the ecosystem. This constraint is structural — written into the Charter and not overridable by any single member or organisation. It is what makes the CEC trustworthy to all parties simultaneously.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-id" style="font-family:var(--mono);font-size:0.57rem;color:var(--muted);letter-spacing:0.08em;">The Civics Ecosystem Toolkit — Introduction — v1.2</div>
+    <div class="footer-tagline">Build it once. Tend the ecosystem. Let everyone use it.</div>
+    <div class="footer-docs">
+      CEC Charter ↗<br>
+      Party Members Fund ↗<br>
+      Policy Briefing ↗
+    </div>
+  </footer>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>

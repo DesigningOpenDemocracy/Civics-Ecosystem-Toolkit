@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Party Fund Governance Policy — Template</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@400;500&family=Barlow:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #161412;
+    --paper: #f6f2eb;
+    --warm: #f0ebe0;
+    --accent: #1d4e6b;
+    --accent-pale: #e8f0f5;
+    --green: #1e5c30;
+    --green-pale: #e8f2eb;
+    --gold: #8a6f2e;
+    --muted: #6b6358;
+    --rule: #d6d0c4;
+    --ph-bg: #fff8e0;
+    --ph-border: #d4a820;
+    --ph-text: #7a5c00;
+    --note-bg: #f0f7f2;
+    --note-border: #4a9960;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Spectral', Georgia, serif;
+    --sans: 'Barlow', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #c8c4b8;
+    font-family: var(--serif);
+    color: var(--ink);
+    padding: 2.5rem 1rem;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 6px 48px rgba(0,0,0,0.15);
+  }
+
+  .page::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent) 60%, var(--gold) 100%);
+  }
+
+  /* ── Cover ── */
+  .cover {
+    padding: 3.5rem 4.5rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .cover-kicker {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .cover-kicker::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+
+  .cover-sub {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .cover-instructions {
+    background: var(--ph-bg);
+    border: 1px solid var(--ph-border);
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .cover-instructions p {
+    font-family: var(--sans);
+    font-size: 0.84rem;
+    color: var(--ph-text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── Content ── */
+  .content { padding: 3rem 4.5rem; }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 3rem; }
+  .section:last-child { margin-bottom: 0; }
+
+  .section-hd {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 1.6rem 0 0.6rem;
+  }
+
+  p {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+
+  p:last-child { margin-bottom: 0; }
+  p strong { font-weight: 700; }
+
+  /* ── Guidance notes ── */
+  .note {
+    background: var(--note-bg);
+    border-left: 3px solid var(--note-border);
+    padding: 0.9rem 1.3rem;
+    margin: 0.8rem 0 1.2rem;
+  }
+
+  .note-label {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--note-border);
+    margin-bottom: 0.3rem;
+  }
+
+  .note p {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* ── Policy fields ── */
+  .field {
+    margin-bottom: 1.4rem;
+  }
+
+  .field-label {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .required {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: white;
+    padding: 0.1rem 0.35rem;
+  }
+
+  .optional {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--warm);
+    color: var(--muted);
+    padding: 0.1rem 0.35rem;
+    border: 1px solid var(--rule);
+  }
+
+  .field-input {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 0.8rem 1rem;
+    min-height: 2.8rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ph-text);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .field-input.tall { min-height: 5rem; }
+  .field-input.options { font-style: normal; }
+
+  .field-hint {
+    font-family: var(--sans);
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    line-height: 1.5;
+  }
+
+  /* ── Options selector ── */
+  .options-grid {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0.4rem 0;
+  }
+
+  .option-row {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding: 0.6rem 0.8rem;
+    background: white;
+    border: 1px solid var(--rule);
+  }
+
+  .option-box {
+    width: 1rem;
+    height: 1rem;
+    border: 1.5px solid var(--rule);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .option-text {
+    font-family: var(--sans);
+    font-size: 0.83rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .option-note {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+    display: block;
+  }
+
+  /* ── Constraint reminder ── */
+  .constraint {
+    background: rgba(139,46,26,0.04);
+    border: 1px solid rgba(139,46,26,0.2);
+    padding: 1rem 1.3rem;
+    margin: 1rem 0;
+  }
+
+  .constraint-label {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8b2e1a;
+    margin-bottom: 0.4rem;
+  }
+
+  .constraint p {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* ── Approval block ── */
+  .approval {
+    border-top: 1px solid var(--rule);
+    padding-top: 2rem;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .approval-field { }
+  .approval-line { border-bottom: 1px solid var(--ink); height: 2.5rem; margin-bottom: 0.3rem; }
+  .approval-label { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 1.2rem 4.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-id { font-family: var(--mono); font-size: 0.57rem; color: var(--muted); letter-spacing: 0.08em; line-height: 1.8; }
+  .footer-set { font-family: var(--mono); font-size: 0.57rem; color: var(--accent); text-align: right; line-height: 1.8; }
+
+  .print-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.65rem 1.1rem;
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .print-btn:hover { background: var(--ink); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+    .print-btn { display: none; }
+  }
+
+  @media (max-width: 680px) {
+    .cover, .content, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .approval { grid-template-columns: 1fr; }
+    h1 { font-size: 1.7rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media print {
+      }
+
+  /* ── Back to index ── */
+  .back-to-index {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 4rem;
+    background: var(--ink, #161412);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .back-to-index a {
+    font-family: var(--mono, 'DM Mono', monospace);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .back-to-index a:hover { color: white; }
+  @media print { .back-to-index { display: none; } }
+  @media (max-width: 680px) { .back-to-index { padding-left: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="back-to-index"><a href="01-civics-ecosystem-toolkit-index.html">&#8592; Civics Ecosystem Toolkit</a></div>
+
+  <div class="cover">
+    <div class="cover-kicker">Civics Ecosystem Toolkit — Working Document</div>
+    <h1>Party Fund Governance Policy</h1>
+    <p class="cover-sub">A template for parties to complete before launching the Member-Directed Community Fund</p>
+    <div class="cover-instructions">
+      <span style="font-size:1.1rem;flex-shrink:0;margin-top:0.1rem;">📋</span>
+      <p>Complete all <strong>Required</strong> fields before the first cycle opens. Optional fields are recommended but can be deferred to a later Policy update. This document does not require a constitutional amendment to update — it can be revised by the party between cycles. The <strong>Fund Mechanism Ideas</strong> companion note surveys allocation mechanism options to help complete Section 3.</p>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Section 0: Identity -->
+    <div class="section" id="s0">
+      <div class="section-hd">
+        <span class="section-num">§0</span>
+        <h2>Policy Identity</h2>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Party name <span class="required">Required</span></div>
+        <div class="field-input">Enter party name</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Policy version <span class="required">Required</span></div>
+        <div class="field-input">v1.2</div>
+        <div class="field-hint">Increment each time this Policy is updated. Include date.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Effective from <span class="required">Required</span></div>
+        <div class="field-input">Date this Policy takes effect — must be before the first cycle opens</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Approved by <span class="required">Required</span></div>
+        <div class="field-input">Name of party body that approved this Policy (e.g. Party Executive, Policy Committee)</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Participation -->
+    <div class="section" id="s1">
+      <div class="section-hd">
+        <span class="section-num">§1</span>
+        <h2>Participation Structure</h2>
+      </div>
+
+      <div class="note">
+        <div class="note-label">Design note</div>
+        <p>Any participation structure is valid provided it complies with the constitutional constraint: equal governance rights per member regardless of contribution level. The party may set contribution amounts, concessional rates, and eligibility criteria — but cannot give higher contributors more voting weight or governance authority.</p>
+      </div>
+
+      <h3>1.1 Who may participate</h3>
+      <div class="field">
+        <div class="field-label">Eligibility <span class="required">Required</span></div>
+        <div class="field-input">e.g. Any financial member of the Party in good standing. / Any member who has been a Party member for at least [X] months.</div>
+      </div>
+
+      <h3>1.2 Contribution structure</h3>
+      <div class="field">
+        <div class="field-label">Contribution levels <span class="required">Required</span></div>
+        <div class="field-input tall options">
+          e.g.
+          Participant: $[X] per year
+          Contributor: $[X] per year
+          Builder: $[X]+ per year
+          Concessional: $[X] per year (for members experiencing financial hardship — self-declared)
+        </div>
+        <div class="field-hint">All levels carry equal governance rights. Any number of tiers is valid. A single flat contribution is also valid.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Payment timing <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. Collected annually at membership renewal. / Payable at time of Fund membership application.</div>
+      </div>
+
+      <h3>1.3 Governance rights</h3>
+      <div class="constraint">
+        <div class="constraint-label">Constitutional constraint — cannot be modified</div>
+        <p>Each participating member holds one equal share of governance authority regardless of contribution level, tenure, or any other factor. This cannot be varied by this Policy.</p>
+      </div>
+    </div>
+
+    <!-- Section 2: Cycle parameters -->
+    <div class="section" id="s2">
+      <div class="section-hd">
+        <span class="section-num">§2</span>
+        <h2>Cycle Parameters</h2>
+      </div>
+
+      <div class="note">
+        <div class="note-label">Design note</div>
+        <p>Cycle parameters define the rhythm of the Fund. Longer cycles reduce member burden but slow the Fund's responsiveness. Shorter cycles increase overhead. Most starting funds do well with an annual cycle.</p>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Cycle length <span class="required">Required</span></div>
+        <div class="options-grid">
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Annual (recommended for launch)<span class="option-note">One allocation cycle per year. Lower overhead. Good for new funds.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Bi-annual<span class="option-note">Two cycles per year. More responsive. Higher administration burden.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Other: _______________</div></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Cycle start date <span class="required">Required</span></div>
+        <div class="field-input">e.g. 1 July each year. / First Monday of March.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Proposal window length <span class="required">Required</span></div>
+        <div class="field-input">e.g. 8 weeks from cycle start.</div>
+        <div class="field-hint">Time during which proposals may be submitted. Must close before deliberation begins.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Deliberation / allocation period length <span class="required">Required</span></div>
+        <div class="field-input">e.g. 4 weeks following close of proposal window.</div>
+      </div>
+
+      <div class="constraint">
+        <div class="constraint-label">Constitutional constraint — cannot be modified</div>
+        <p>This Policy may not be amended during an active allocation cycle. Any Policy update takes effect at the start of the next cycle.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Allocation mechanism -->
+    <div class="section" id="s3">
+      <div class="section-hd">
+        <span class="section-num">§3</span>
+        <h2>Allocation Mechanism</h2>
+      </div>
+
+      <div class="note">
+        <div class="note-label">Design note</div>
+        <p>This is the most important design decision in the Policy. The <strong>Fund Mechanism Ideas</strong> companion note surveys available options with trade-offs. Most parties launching for the first time should start with a deliberation panel for collective decisions and a pledge threshold for individual ones — both are simple to run without specialist software.</p>
+      </div>
+
+      <h3>3.1 Collective mode</h3>
+      <p>How does the Fund collectively decide which proposals to fund?</p>
+
+      <div class="field">
+        <div class="field-label">Collective mechanism <span class="required">Required</span></div>
+        <div class="options-grid">
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Deliberation panel with ratification window (recommended for launch)<span class="option-note">A panel deliberates, produces a recommendation, full membership ratifies or objects.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Open participatory budgeting<span class="option-note">All members vote directly on allocation. Simple but higher bandwidth demand.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Token allocation<span class="option-note">Members receive token budgets and spend across proposals.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Other (describe): _______________</div></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Panel size (if deliberation panel) <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. 5–7 members, scaling with Fund membership size.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Panel selection method (if deliberation panel) <span class="optional">Optional</span></div>
+        <div class="options-grid">
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Random draw (sortition)<span class="option-note">Recommended for funds with 20+ members. Avoids self-selection bias.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Rotation through membership<span class="option-note">Each member serves in turn. Predictable but less random.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Open nomination<span class="option-note">Simpler for small funds. Risk of same people always serving.</span></div></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Ratification window length (if deliberation panel) <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. 14 days after panel recommendation is published.</div>
+        <div class="field-hint">The period during which members may formally object to the panel's recommendation before it takes effect.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Objection threshold (if deliberation panel) <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. One-third of active Fund members must formally object for the recommendation to return to the panel.</div>
+      </div>
+
+      <h3>3.2 Individual mode</h3>
+      <p>May members independently direct their contributions to specific destinations outside the collective process?</p>
+
+      <div class="field">
+        <div class="field-label">Individual mode <span class="required">Required</span></div>
+        <div class="options-grid">
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Yes — pledge threshold model<span class="option-note">Members pledge to specific destinations. Activates when threshold is reached.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Yes — other model (describe): _______________</div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">No — collective mode only</div></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Threshold (if pledge model) <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. Minimum [X] members pledging, or $[X] in total pledges, whichever is reached first, within the cycle window.</div>
+        <div class="field-hint">Set this carefully. Too high and nothing activates. Too low and the collective process is bypassed entirely. A starting suggestion: 15% of active Fund members or $500, whichever is lower.</div>
+      </div>
+    </div>
+
+    <!-- Section 4: Eligibility review -->
+    <div class="section" id="s4">
+      <div class="section-hd">
+        <span class="section-num">§4</span>
+        <h2>Eligibility Review Process</h2>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Who reviews proposals for eligibility <span class="required">Required</span></div>
+        <div class="field-input">e.g. The Fund Coordinator reviews proposals against the constitutional eligible purposes and excluded purposes before the deliberation period opens.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Challenge process <span class="required">Required</span></div>
+        <div class="field-input">e.g. Any Fund member may challenge an eligibility decision within 7 days of it being published. Challenges are resolved by a majority vote of active Fund members.</div>
+      </div>
+    </div>
+
+    <!-- Section 5: Unallocated contributions -->
+    <div class="section" id="s5">
+      <div class="section-hd">
+        <span class="section-num">§5</span>
+        <h2>Unallocated Contributions</h2>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Treatment of unallocated contributions <span class="required">Required</span></div>
+        <div class="options-grid">
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Carry forward to next cycle (accumulate in reserve)<span class="option-note">Simplest. Reserve grows until directed. Good for building up to larger projects.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Transfer to standing destination after [X] cycles<span class="option-note">Name the destination below. Prevents indefinite accumulation.</span></div></div>
+          <div class="option-row"><div class="option-box"></div><div class="option-text">Return to contributing member after [X] cycles<span class="option-note">Most conservative. Members retain control. More administration.</span></div></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Standing destination (if applicable) <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. Civics Ecosystem Cooperative. / A standing eligible destination voted on by Fund members at the start of each cycle.</div>
+      </div>
+    </div>
+
+    <!-- Section 6: Administration -->
+    <div class="section" id="s6">
+      <div class="section-hd">
+        <span class="section-num">§6</span>
+        <h2>Administration</h2>
+      </div>
+
+      <div class="note">
+        <div class="note-label">Legal requirement before launch</div>
+        <p>Before operationalising the Fund, the party must seek legal advice on establishing the Fund account on <strong>trust terms</strong>. This is the strongest protection for Fund contributions against party insolvency &mdash; contributions held on trust are not party property and should be beyond the reach of creditors. A standard party bank account does not provide this protection. See clause [X.X.13] of the constitutional amendment.</p>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Fund Coordinator <span class="required">Required</span></div>
+        <div class="field-input">Name and role of the Fund Coordinator. Must not hold party executive office simultaneously.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Fund account details <span class="required">Required</span></div>
+        <div class="field-input">Bank and account name. Must be separate from party operational accounts. Established on trust terms per legal advice. Independent co-signatories required for disbursements above $[X].</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Trust structuring &mdash; legal advice obtained <span class="required">Required</span></div>
+        <div class="field-input">Name of legal adviser. Date advice received. Summary of trust structure adopted (or explanation of why trust terms were not possible and what alternative protection is in place).</div>
+        <div class="field-hint">Do not launch without completing this field. An unprotected Fund account exposes member contributions to party creditor claims in the event of insolvency.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Insolvency contact and procedure <span class="required">Required</span></div>
+        <div class="field-input">Who the Fund Coordinator notifies if the party enters administration. Document the 7-day member notification obligation and 30-day emergency vote obligation under clause [X.X.13] so the Coordinator can act quickly if needed.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Annual fund statement <span class="required">Required</span></div>
+        <div class="field-input">e.g. The Fund Coordinator publishes an annual fund statement to all Fund members within 30 days of the end of each cycle, including: total contributions received, total disbursed, total in reserve, and a summary of funded projects and their milestone status.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Governance platform <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. Proposals submitted and deliberation conducted via [platform]. Pledge tracking via [platform]. Simple email list acceptable for launch if membership is small.</div>
+      </div>
+    </div>
+
+    <!-- Section 7: Policy review -->
+    <div class="section" id="s7">
+      <div class="section-hd">
+        <span class="section-num">§7</span>
+        <h2>Policy Review</h2>
+      </div>
+
+      <div class="note">
+        <div class="note-label">Constitutional requirement</div>
+        <p>The constitutional amendment (clause [X.X.9]) requires a mandatory member review of this Policy after the first two completed cycles. This is not optional. This section specifies how the party will conduct that constitutionally-required review.</p>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Sunset review process — implementing clause [X.X.9] <span class="required">Required</span></div>
+        <div class="field-input">e.g. After the second completed cycle, the Fund Coordinator presents this Policy to all Fund members with a summary of what worked well and what didn't. Fund members have [X] weeks to provide written feedback. The party publishes a response to that feedback and any Policy updates before the third cycle opens.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Ongoing review schedule <span class="optional">Optional</span></div>
+        <div class="field-input">e.g. This Policy is reviewed annually thereafter, or at any time on written request from [X]% of active Fund members.</div>
+      </div>
+    </div>
+
+    <!-- Approval -->
+    <div class="approval">
+      <div class="approval-field">
+        <div class="approval-line"></div>
+        <div class="approval-label">Approved by (name &amp; role)</div>
+      </div>
+      <div class="approval-field">
+        <div class="approval-line"></div>
+        <div class="approval-label">On behalf of</div>
+      </div>
+      <div class="approval-field">
+        <div class="approval-line"></div>
+        <div class="approval-label">Date</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-id">
+      Party Fund Governance Policy Template — v1.2<br>
+      Working document. Complete before first cycle. Part of the Civics Ecosystem Toolkit.
+    </div>
+    <div class="footer-set">
+      Civics Ecosystem Toolkit<br>
+      PMF Amendment ↗ · Fund Mechanism Ideas ↗
+    </div>
+  </footer>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+</body>
+</html>
